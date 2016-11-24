@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.michael.footrace">
+          package="com.example.michael.footrace">
 
     <application
         android:allowBackup="true"
@@ -10,10 +10,24 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".SinglePlayerMain">
+        </activity>
+        <activity android:name=".MultiPlayerMain">
+        </activity>
+        <activity android:name=".NewDesign">
+        </activity>
+        <activity android:name=".Settings">
+        </activity>
+        <activity android:name=".MultiPlayerHost">
+        </activity>
+        <activity android:name=".MultiPlayerJoin">
+        </activity>
+        <activity android:name=".PlayGame">
         </activity>
     </application>
 
