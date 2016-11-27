@@ -9,9 +9,12 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-public class DesignView extends View {
+import java.io.Serializable;
+
+public class DesignView extends View implements Serializable{
 
     private Path _path = new Path();
+    private String _pathName = "";
     private Paint _paint = new Paint();
     private float _prevPoint = -1;
 
@@ -34,6 +37,18 @@ public class DesignView extends View {
         _paint.setColor(Color.BLACK);
         _paint.setStyle(Paint.Style.STROKE);
         _paint.setStrokeWidth(12);
+    }
+
+    public Path getPath(){
+        return _path;
+    }
+
+    public String get_pathName(){
+        return _pathName;
+    }
+
+    public void set_pathName(String name){
+        _pathName = name;
     }
 
     public void setBrushColor(int red, int green, int blue){

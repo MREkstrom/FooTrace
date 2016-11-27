@@ -1,20 +1,25 @@
 package com.example.michael.footrace;
 
 import android.content.Intent;
+import android.graphics.Path;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
     public static final int REQUEST_NEW_DESIGN = 1;
 
     // TODO- global settings values and set/get methods
+    public static HashMap <String, Path> traces; //contains mappings of path names to traces
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        traces = new HashMap <String, Path>();
     }
 
     //Handle execution of button clicks for main menu
@@ -51,12 +56,16 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == REQUEST_NEW_DESIGN && resultCode == RESULT_OK && null != data) {
-            addNewDesign();
+            addNewDesign(data);
         }
     }
 
-    public static void addNewDesign(){
-        // TODO - Add new design to list
+    public static void addNewDesign(Intent data){
+        DesignView dv = (DesignView)data.getSerializableExtra("DV");
+        String path_name = dv.get_pathName();
+        Path path = dv.getPath();
+
+        traces.put(path_name, path);
     }
 
 }

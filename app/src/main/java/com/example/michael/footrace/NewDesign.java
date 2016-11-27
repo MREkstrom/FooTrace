@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -181,6 +182,9 @@ public class NewDesign extends AppCompatActivity {
 
                 break;
             case R.id.saveButton:
+                //Creates intent object to return when saving
+                final Intent resultIntent = new Intent();
+
                 //builds alert dialog for saving
                 builder = new AlertDialog.Builder(this);
 
@@ -198,7 +202,11 @@ public class NewDesign extends AppCompatActivity {
                         .setPositiveButton("OK!", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
-                                //save path and name
+                                EditText name = (EditText)findViewById(R.id.trace_name);
+                                mDesignView.set_pathName(name.getText().toString());
+                                resultIntent.putExtra("DV", mDesignView);
+                                setResult(RESULT_OK, resultIntent);
+                                finish();
                             }
                         })
                         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -210,15 +218,8 @@ public class NewDesign extends AppCompatActivity {
                 alertDialog = builder.create();
                 alertDialog.show();
 
-                // TODO - save the design into resultIntent via dialog popup
-                Intent resultIntent = new Intent();
-
-                setResult(RESULT_OK, resultIntent);
-                finish();
-
                 break;
             case R.id.mapToggleButton:
-
                 // TODO - add/remove map to DesignView background
 
                 break;
