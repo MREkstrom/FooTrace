@@ -146,6 +146,7 @@ public class NewDesign extends AppCompatActivity {
                 alertDialog = builder.create();
                 alertDialog.show();
 
+                break;
             case R.id.clearButton:
                 //builds alert dialog for clearing
                 builder = new AlertDialog.Builder(this);
@@ -178,6 +179,7 @@ public class NewDesign extends AppCompatActivity {
                 alertDialog = builder.create();
                 alertDialog.show();
 
+                break;
             case R.id.saveButton:
                 //builds alert dialog for saving
                 builder = new AlertDialog.Builder(this);
@@ -214,6 +216,7 @@ public class NewDesign extends AppCompatActivity {
                 setResult(RESULT_OK, resultIntent);
                 finish();
 
+                break;
             case R.id.mapToggleButton:
 
                 // TODO - add/remove map to DesignView background
