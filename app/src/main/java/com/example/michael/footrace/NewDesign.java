@@ -202,7 +202,7 @@ public class NewDesign extends AppCompatActivity {
                         .setPositiveButton("OK!", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
-                                EditText name = (EditText)findViewById(R.id.trace_name);
+                                EditText name = (EditText)saveDialogView.findViewById(R.id.trace_name);
                                 mDesignView.set_pathName(name.getText().toString());
                                 resultIntent.putExtra("DV", mDesignView);
                                 setResult(RESULT_OK, resultIntent);
