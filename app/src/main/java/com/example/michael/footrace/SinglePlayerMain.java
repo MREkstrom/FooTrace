@@ -33,7 +33,7 @@ public class SinglePlayerMain extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == MainActivity.REQUEST_NEW_DESIGN && resultCode == RESULT_OK && null != data) {
-            MainActivity.addNewDesign();
+            MainActivity.addNewDesign(data);
         }
 
 
