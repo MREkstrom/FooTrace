@@ -37,6 +37,9 @@ public class DesignView extends View implements Serializable{
         _paint.setColor(Color.BLACK);
         _paint.setStyle(Paint.Style.STROKE);
         _paint.setStrokeWidth(12);
+        _paint.setAntiAlias(true);
+        _paint.setStrokeCap(Paint.Cap.ROUND);
+        _paint.setStrokeJoin(Paint.Join.ROUND);
     }
 
     public Path getPath(){
