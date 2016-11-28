@@ -4,19 +4,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class NewDesign extends AppCompatActivity {
 
@@ -224,5 +218,36 @@ public class NewDesign extends AppCompatActivity {
 
                 break;
         }
+
+
+        //Commented version from Jon's IA09:
+
+//    public void onButtonClickSaveImage(View v){
+//
+//        // Without this call, the app was crashing in the onActivityResult method when trying to read from file system
+//        FileUtils.verifyStoragePermissions(this);
+//
+//        final Bitmap bmp = _impressionistView.getBitmap();
+//        final String descr = "Impressionist Painting drawn in ImpressionistPainter434";
+//
+//        final EditText input = new EditText(MainActivity.this);
+//        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+//                LinearLayout.LayoutParams.MATCH_PARENT,
+//                LinearLayout.LayoutParams.MATCH_PARENT);
+//        input.setLayoutParams(lp);
+//
+//        new AlertDialog.Builder(this)
+//                .setTitle("Save Painting")
+//                .setMessage("Give your painting a title:")
+//                .setIcon(android.R.drawable.ic_dialog_alert)
+//                .setView(input)
+//                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int whichButton) {
+//                        Toast.makeText(MainActivity.this, "Painting saved", Toast.LENGTH_SHORT).show();
+//                        MediaStore.Images.Media.insertImage(getContentResolver(), bmp, input.getText().toString() , descr);
+//                    }})
+//                .setNegativeButton(android.R.string.no, null).show();
+//    }
+
     }
 }
