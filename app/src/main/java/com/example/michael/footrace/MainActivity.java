@@ -5,7 +5,6 @@ import android.graphics.Path;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,10 +36,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.drawButton:
                 nextScreen.setClass(MainActivity.this,NewDesign.class);
+                draw = true;
                 break;
             case R.id.settingsButton:
                 nextScreen.setClass(MainActivity.this,Settings.class);
-                draw = true;
                 break;
         }
 
@@ -61,11 +60,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static void addNewDesign(Intent data){
-        DesignView dv = (DesignView)data.getSerializableExtra("DV");
-        String path_name = dv.get_pathName();
-        Path path = dv.getPath();
+        Parcelable_Path pathInfo = data.getParcelableExtra("PathInfo");
+        String path_name = pathInfo.getPathName();
+        Path path = pathInfo.getPath();
 
         traces.put(path_name, path);
+
+        //System.out.println(traces.toString());
     }
 
 }

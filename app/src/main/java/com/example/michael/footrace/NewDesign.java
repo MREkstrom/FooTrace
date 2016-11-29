@@ -197,8 +197,9 @@ public class NewDesign extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
                                 EditText name = (EditText)saveDialogView.findViewById(R.id.trace_name);
-                                mDesignView.set_pathName(name.getText().toString());
-                                resultIntent.putExtra("DV", mDesignView);
+                                String path_name = name.getText().toString();
+                                Parcelable_Path parc = new Parcelable_Path(mDesignView.getPath(),path_name);
+                                resultIntent.putExtra("PathInfo", parc);
                                 setResult(RESULT_OK, resultIntent);
                                 finish();
                             }
@@ -218,36 +219,5 @@ public class NewDesign extends AppCompatActivity {
 
                 break;
         }
-
-
-        //Commented version from Jon's IA09:
-
-//    public void onButtonClickSaveImage(View v){
-//
-//        // Without this call, the app was crashing in the onActivityResult method when trying to read from file system
-//        FileUtils.verifyStoragePermissions(this);
-//
-//        final Bitmap bmp = _impressionistView.getBitmap();
-//        final String descr = "Impressionist Painting drawn in ImpressionistPainter434";
-//
-//        final EditText input = new EditText(MainActivity.this);
-//        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-//                LinearLayout.LayoutParams.MATCH_PARENT,
-//                LinearLayout.LayoutParams.MATCH_PARENT);
-//        input.setLayoutParams(lp);
-//
-//        new AlertDialog.Builder(this)
-//                .setTitle("Save Painting")
-//                .setMessage("Give your painting a title:")
-//                .setIcon(android.R.drawable.ic_dialog_alert)
-//                .setView(input)
-//                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int whichButton) {
-//                        Toast.makeText(MainActivity.this, "Painting saved", Toast.LENGTH_SHORT).show();
-//                        MediaStore.Images.Media.insertImage(getContentResolver(), bmp, input.getText().toString() , descr);
-//                    }})
-//                .setNegativeButton(android.R.string.no, null).show();
-//    }
-
     }
 }
