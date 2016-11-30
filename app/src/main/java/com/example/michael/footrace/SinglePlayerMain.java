@@ -28,12 +28,21 @@ public class SinglePlayerMain extends AppCompatActivity {
         startActivityForResult(designIntent,MainActivity.REQUEST_NEW_DESIGN);
     }
 
+    // TODO- call this function from each list element, passing the Path or drawable to it (add params)
+    public void playGame(){
+        Intent playIntent = new Intent(SinglePlayerMain.this, PlayGame.class);
+        playIntent.putExtra("mode","SP"); //SP for singleplayer, MP for multiplayer
+        startActivityForResult(playIntent, MainActivity.REQUEST_PLAY_GAME);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == MainActivity.REQUEST_NEW_DESIGN && resultCode == RESULT_OK && null != data) {
             MainActivity.addNewDesign(data);
+        }  else if (requestCode == MainActivity.REQUEST_PLAY_GAME && resultCode == RESULT_OK && null != data) {
+            // TODO- handle return of play results
         }
 
 
