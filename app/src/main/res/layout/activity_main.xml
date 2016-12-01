@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -9,25 +10,6 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.michael.footrace.MainActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="FooTrace"
-        android:layout_marginTop="26dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/titleView"/>
-
-    <Button
-        android:text="Single"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/titleView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:id="@+id/spButton"
-        android:onClick="onMainMenuButtonClick"/>
 
     <Button
         android:text="Multi"
@@ -49,13 +31,38 @@
         android:id="@+id/drawButton"
         android:onClick="onMainMenuButtonClick"/>
 
-    <Button
-        android:text="Settings"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        app:srcCompat="@mipmap/maintitle"
+        android:id="@+id/imageView"
+        android:scaleX="5"
+        android:scaleY="5"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="54dp" />
+
+    <Button
+        android:text="Single"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:id="@+id/spButton"
+        android:onClick="onMainMenuButtonClick"
+        android:layout_below="@+id/imageView"
+        android:layout_alignLeft="@+id/mpButton"
+        android:layout_alignStart="@+id/mpButton" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_menu_info_details"
+        android:id="@+id/settingsButton"
+        android:background="@color/colorAccent"
+        android:layout_alignBottom="@+id/drawButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/settingsButton"
-        android:onClick="onMainMenuButtonClick"/>
+        android:layout_marginBottom="27dp"
+        android:onClick="onMainMenuButtonClick" />
+
 </RelativeLayout>

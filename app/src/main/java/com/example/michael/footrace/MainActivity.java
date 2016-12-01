@@ -2,9 +2,12 @@ package com.example.michael.footrace;
 
 import android.content.Intent;
 import android.graphics.Path;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
+
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,6 +23,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         traces = new HashMap <String, Path>();
+
+        Typeface font = Typeface.createFromAsset(getAssets(), "mvboli.ttf");
+        Button first = (Button) findViewById(R.id.spButton);
+        first.setTypeface(font);
+
     }
 
     //Handle execution of button clicks for main menu
