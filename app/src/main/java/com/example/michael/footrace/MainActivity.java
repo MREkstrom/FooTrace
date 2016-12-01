@@ -24,9 +24,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         traces = new HashMap <String, Path>();
 
-        Typeface font = Typeface.createFromAsset(getAssets(), "mvboli.ttf");
-        Button first = (Button) findViewById(R.id.spButton);
-        first.setTypeface(font);
+        Typeface tf = Typeface.createFromAsset(getAssets(), "mvboli.ttf");
+        Button[] buttons = {(Button) findViewById(R.id.spButton),
+                (Button) findViewById(R.id.mpButton),
+                (Button) findViewById(R.id.drawButton)};
+        for (Button b : buttons) {
+            b.setTypeface(tf);
+        }
 
     }
 

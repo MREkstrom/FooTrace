@@ -24,6 +24,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/doneButton"
-        android:onClick="done"/>
+        android:onClick="done"
+        android:background="@drawable/ovalbuttonstyle"/>/>
 
 </RelativeLayout>

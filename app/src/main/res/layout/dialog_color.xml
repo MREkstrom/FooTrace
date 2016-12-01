@@ -17,7 +17,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/seekBarRed"
-        android:max="255" />
+        android:max="255"
+        android:progressTint="@color/seekBarRed"
+        android:thumbTint="@color/seekBarRed" />
 
     <TextView
         android:text="Green"
@@ -32,7 +34,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/seekBarGreen"
         android:max="255"
-        android:indeterminate="false" />
+        android:indeterminate="false"
+        android:progressTint="@color/seekBarGreen"
+        android:thumbTint="@color/seekBarGreen" />
 
     <TextView
         android:text="Blue"
@@ -48,7 +52,10 @@
         android:id="@+id/seekBarBlue"
         android:max="255"
         android:indeterminate="false"
-        android:layout_gravity="right" />
+        android:layout_gravity="right"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:progressTint="@color/seekBarBlue"
+        android:thumbTint="@color/seekBarBlue" />
 
     <TextView
         android:layout_width="70dp"

@@ -28,7 +28,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="23dp"
         android:id="@+id/mpDrawButton"
-        android:onClick="newDesign"/>
+        android:onClick="newDesign"
+        android:background="@drawable/beveledsquarebuttonstyle"/>/>
 
     <ListView
         android:layout_width="match_parent"
