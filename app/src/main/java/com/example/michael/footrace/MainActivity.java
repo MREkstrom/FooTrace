@@ -2,14 +2,20 @@ package com.example.michael.footrace;
 
 import android.content.Intent;
 import android.graphics.Path;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
+
 import java.util.HashMap;
+
+//commit
 
 public class MainActivity extends AppCompatActivity {
 
     public static final int REQUEST_NEW_DESIGN = 1;
+    public static final int REQUEST_PLAY_GAME = 2;
 
     // TODO- global settings values and set/get methods
     public static HashMap <String, Path> traces; //contains mappings of path names to traces
@@ -19,6 +25,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         traces = new HashMap <String, Path>();
+
+        Typeface tf = Typeface.createFromAsset(getAssets(), "mvboli.ttf");
+        Button[] buttons = {(Button) findViewById(R.id.spButton),
+                (Button) findViewById(R.id.mpButton),
+                (Button) findViewById(R.id.drawButton)};
+        for (Button b : buttons) {
+            b.setTypeface(tf);
+        }
+
     }
 
     //Handle execution of button clicks for main menu

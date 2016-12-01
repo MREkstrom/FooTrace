@@ -4,10 +4,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -25,6 +28,12 @@ public class NewDesign extends AppCompatActivity {
         setContentView(R.layout.activity_new_design);
 
         mDesignView = (DesignView) findViewById(R.id.designView);
+
+        Typeface tf = Typeface.createFromAsset(getAssets(), "mvboli.ttf");
+        Button[] buttons = {(Button) findViewById(R.id.saveButton)};
+        for (Button b : buttons) {
+            b.setTypeface(tf);
+        }
     }
 
     public void onDesignButtonClick(View v){
@@ -49,6 +58,12 @@ public class NewDesign extends AppCompatActivity {
 
                 // Inflate the dialog_color.xml layout and create the View
                 final View colorDialogView = inflater.inflate(R.layout.dialog_color, null);
+
+                //Switch the fonts of the text fields
+                ((TextView) colorDialogView.findViewById(R.id.textViewRed)).setTypeface(Typeface.createFromAsset(getAssets(), "mvboli.ttf"));
+                ((TextView) colorDialogView.findViewById(R.id.textViewGreen)).setTypeface(Typeface.createFromAsset(getAssets(), "mvboli.ttf"));
+                ((TextView) colorDialogView.findViewById(R.id.textViewBlue)).setTypeface(Typeface.createFromAsset(getAssets(), "mvboli.ttf"));
+                ((TextView) colorDialogView.findViewById(R.id.colorSwatchTitle)).setTypeface(Typeface.createFromAsset(getAssets(), "mvboli.ttf"));
 
                 //Sets color swatch to selected path color
                 TextView swatch = (TextView)colorDialogView.findViewById(R.id.colorSwatch);
@@ -118,10 +133,12 @@ public class NewDesign extends AppCompatActivity {
                 });
 
                 // This is the method that allows us to use our own custom view. We set the AlertDialog builder
-                // to the view we created with the inflater above.
+                // to the view we created with the inflater above
                 builder.setView(colorDialogView)
                         // Add action buttons
-                        .setTitle("Color Picker")
+                        //.setTitle("Color Picker")
+                        .setCustomTitle(FormatUtilities.makeDialogTitle(new TextView(this), getAssets(), "Color Picker"))
+
                         .setPositiveButton("OK!", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
@@ -156,7 +173,7 @@ public class NewDesign extends AppCompatActivity {
 
                 builder.setView(clearDialogView)
 
-                        .setTitle("Clear Path")
+                        .setCustomTitle(FormatUtilities.makeDialogTitle(new TextView(this), getAssets(), "Clear Path"))
                         .setMessage("Do you want to clear your path?")
                         .setPositiveButton("OK!", new DialogInterface.OnClickListener() {
                             @Override
@@ -172,7 +189,12 @@ public class NewDesign extends AppCompatActivity {
                         });
 
                 alertDialog = builder.create();
+
+
                 alertDialog.show();
+
+                //Set message font
+                ((TextView) alertDialog.findViewById(android.R.id.message)).setTypeface(Typeface.createFromAsset(getAssets(), "mvboli.ttf"));
 
                 break;
             case R.id.saveButton:
@@ -192,7 +214,7 @@ public class NewDesign extends AppCompatActivity {
 
                 builder.setView(saveDialogView)
                         // Add action buttons
-                        .setTitle("Save Your Design")
+                        .setCustomTitle(FormatUtilities.makeDialogTitle(new TextView(this), getAssets(), "Save Your Design"))
                         .setPositiveButton("OK!", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
@@ -212,6 +234,9 @@ public class NewDesign extends AppCompatActivity {
 
                 alertDialog = builder.create();
                 alertDialog.show();
+
+                //Set message text to proper font
+                ((TextView) alertDialog.findViewById(R.id.trace_name)).setTypeface(Typeface.createFromAsset(getAssets(), "mvboli.ttf"));
 
                 break;
             case R.id.mapToggleButton:
