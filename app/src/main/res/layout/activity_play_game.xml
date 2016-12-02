@@ -25,6 +25,18 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/doneButton"
         android:onClick="done"
-        android:background="@drawable/ovalbuttonstyle"/>/>
+        android:background="@drawable/ovalbuttonstyle"/>
+
+    <TextView
+        android:id="@+id/stopwatch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:ellipsize="end"
+        android:scrollbars="none"
+        android:text="Time: 00:000"
+        android:textAlignment="center"
+        android:textColor="#ff0019"
+        android:textSize="48dp"/>
 
 </RelativeLayout>
