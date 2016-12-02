@@ -6,4 +6,5 @@
     <color name="seekBarBlue">#303f9f</color>
     <color name="seekBarGreen">#369f30</color>
     <color name="seekBarRed">#9f3030</color>
+    <color name="secondaryBackground">#bfe4be</color>
 </resources>

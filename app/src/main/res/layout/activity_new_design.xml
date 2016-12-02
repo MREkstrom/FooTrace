@@ -10,18 +10,18 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/secondaryBackground"
     tools:context="com.example.michael.footrace.NewDesign">
 
-    <ImageButton
+    <com.example.michael.footrace.DesignView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/map"
-        android:layout_alignParentTop="true"
+        android:id="@+id/designView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/mapToggleButton"
-        android:onClick="onDesignButtonClick"
-        android:background="@android:color/transparent"/>
+        android:layout_alignParentTop="true"
+        android:background="@android:color/background_light"
+        android:layout_alignBottom="@+id/colorButton" />
 
     <Button
         android:text="Save"
@@ -63,14 +63,16 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <com.example.michael.footrace.DesignView
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/designView"
+        app:srcCompat="@mipmap/map"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/saveButton"
-        android:layout_alignParentTop="true" />
+        android:id="@+id/mapToggleButton"
+        android:onClick="onDesignButtonClick"
+        android:background="@android:color/transparent"/>
     />
 
 </RelativeLayout>
