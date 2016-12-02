@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import static com.example.michael.footrace.PlayGame.Mode.MULTI;
 import static com.example.michael.footrace.PlayGame.Mode.SINGLE;
@@ -37,6 +38,9 @@ public class PlayGame extends AppCompatActivity implements SensorEventListener{
     // TODO - finish implementing gameplay and hook it up to the menus
 
     // TODO - timer
+    private Stopwatch _timer; // Stopwatch timer
+    private Thread _timerThread;//Thread for Stopwatch
+    private TextView _timeDisplay; // Text for stopwatch
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +95,10 @@ public class PlayGame extends AppCompatActivity implements SensorEventListener{
                         finish();
                     }
                 }).show();
+
+        //Sets stopwatch textView
+        _timeDisplay = (TextView) findViewById(R.id.stopwatch);
+
     }
 
     @Override
@@ -118,12 +126,29 @@ public class PlayGame extends AppCompatActivity implements SensorEventListener{
 
     // Begin playing
     public void start (){
+        //create stopwatch, run it on new thread
+        _timer = new Stopwatch(PlayGame.this);
+        _timerThread = new Thread(_timer);
+        _timerThread.start();
+
+        //start the timer
+        _timer.start();
 
     }
 
     // Complete game and return to menu, show score screen
     public void done (View v){
         // TODO- "calculate" / save score and return
+        //stop timer
+        _timer.stop();
+
+        //stop the stopwatch thread
+        _timerThread.interrupt();
+        _timerThread = null;
+
+        //Captures ending time, can be passed to results screen
+        String endTime = _timeDisplay.getText().toString();
+
 
         Intent result = new Intent();
             //Put extras with score
@@ -145,5 +170,18 @@ public class PlayGame extends AppCompatActivity implements SensorEventListener{
     @Override
     public void onResume(){
         _sensorManager.registerListener(this, _accel, SensorManager.SENSOR_DELAY_GAME); // Re-register on focus regain
+    }
+
+    /**
+     * Update the text of the stopwatch
+     * @param timeAsText updates stopwatch
+     */
+    public void updateTimerText(final String timeAsText) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                _timeDisplay.setText(timeAsText);
+            }
+        });
     }
 }
