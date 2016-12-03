@@ -1,23 +1,31 @@
 package com.example.michael.footrace;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Path;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
 
 public class SinglePlayerMain extends AppCompatActivity {
 
-    // TODO - extend ListViewActivity? Need some way to implement the design list.
-    // If use ListViewActivity (and maybe for all methods), must add a custom Adapter
-    // and Design class to put into list. Also applies to MultiPlayerHost.
-
-    // Clicking on a design involves the following commented out code:
-
-//    Intent traceIntent = new Intent(SinglePlayerMain.this, PlayGame.class);
-//    traceIntent.putExtra("trace",<design object?>)
-//    startActivity(traceIntent);
+    private ArrayList<String> traceList = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +37,60 @@ public class SinglePlayerMain extends AppCompatActivity {
         for (Button b : buttons) {
             b.setTypeface(tf);
         }
+
+        ListView lv = (ListView) findViewById(R.id.spDesignList);
+        displayTraces(MainActivity.traces);
+        lv.setAdapter(new ListAdapter(this, R.layout.path_list_item, traceList));
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(SinglePlayerMain.this, "List item was clicked at " + position, Toast.LENGTH_SHORT).show();
+                System.out.println(traceList.get(position));
+                // TODO: Send path to play game method when selected
+                //    Intent traceIntent = new Intent(SinglePlayerMain.this, PlayGame.class);
+                //    traceIntent.putExtra("trace",<design object?>)
+                //    startActivity(traceIntent);
+            }
+        });
+    }
+
+    private void displayTraces(HashMap<String, Path> traces) {
+        Set<String> paths = traces.keySet();
+        for(String name : paths){
+            traceList.add(name);
+        }
+    }
+
+    private class ListAdapter extends ArrayAdapter<String> {
+        private int layout;
+        private List<String> traces;
+        private ListAdapter(Context context, int the_layout, List<String> designs) {
+            super(context, the_layout, designs);
+            traces = designs;
+            layout = the_layout;
+        }
+
+        @Override
+        public View getView(final int position, View convertView, ViewGroup parent) {
+            Row rowHandler = null;
+            if(convertView == null) {
+                LayoutInflater inflater = LayoutInflater.from(getContext());
+                convertView = inflater.inflate(layout, parent, false);
+                Row row = new Row();
+                row.pathImage = (ImageView) convertView.findViewById(R.id.pathImage);
+                row.pathName = (TextView) convertView.findViewById(R.id.pathName);
+                convertView.setTag(row);
+            }
+            rowHandler = (Row) convertView.getTag();
+
+            rowHandler.pathName.setText(getItem(position));
+
+            return convertView;
+        }
+    }
+    public class Row {
+        ImageView pathImage;
+        TextView pathName;
     }
 
     public void newDesign(View v){
