@@ -14,7 +14,6 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final int REQUEST_NEW_DESIGN = 1;
     public static final int REQUEST_PLAY_GAME = 2;
 
     // TODO- global settings values and set/get methods
@@ -39,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
     //Handle execution of button clicks for main menu
     public void onMainMenuButtonClick(View v){
 
-        boolean draw = false;
         Intent nextScreen = new Intent();
 
         switch(v.getId()){
@@ -51,37 +49,23 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.drawButton:
                 nextScreen.setClass(MainActivity.this,NewDesign.class);
-                draw = true;
                 break;
             case R.id.settingsButton:
                 nextScreen.setClass(MainActivity.this,Settings.class);
                 break;
         }
 
-        if(draw){
-            startActivityForResult(nextScreen, REQUEST_NEW_DESIGN);
-        } else {
-            startActivity(nextScreen);
-        }
+        startActivity(nextScreen);
+
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == REQUEST_NEW_DESIGN && resultCode == RESULT_OK && null != data) {
-            addNewDesign(data);
+        if (requestCode == REQUEST_PLAY_GAME && resultCode == RESULT_OK && null != data) {
+            //Do something
         }
-    }
-
-    public static void addNewDesign(Intent data){
-        Parcelable_Path pathInfo = data.getParcelableExtra("PathInfo");
-        String path_name = pathInfo.getPathName();
-        Path path = pathInfo.getPath();
-
-        traces.put(path_name, path);
-
-        //System.out.println(traces.toString());
     }
 
 }

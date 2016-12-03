@@ -44,12 +44,7 @@ public class SinglePlayerMain extends AppCompatActivity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(SinglePlayerMain.this, "List item was clicked at " + position, Toast.LENGTH_SHORT).show();
-                System.out.println(traceList.get(position));
-                // TODO: Send path to play game method when selected
-                //    Intent traceIntent = new Intent(SinglePlayerMain.this, PlayGame.class);
-                //    traceIntent.putExtra("trace",<design object?>)
-                //    startActivity(traceIntent);
+                playGame(traceList.get(position));
             }
         });
     }
@@ -95,13 +90,15 @@ public class SinglePlayerMain extends AppCompatActivity {
 
     public void newDesign(View v){
         Intent designIntent = new Intent(SinglePlayerMain.this, NewDesign.class);
-        startActivityForResult(designIntent,MainActivity.REQUEST_NEW_DESIGN);
+        startActivity(designIntent);
     }
 
     // TODO- call this function from each list element, passing the Path or drawable to it (add params)
-    public void playGame(){
+    public void playGame(String chosenPath){
         Intent playIntent = new Intent(SinglePlayerMain.this, PlayGame.class);
-        playIntent.putExtra("mode","SP"); //SP for singleplayer, MP for multiplayer
+        playIntent.putExtra("Mode","SP"); //SP for singleplayer, MP for multiplayer
+        playIntent.putExtra("PathName", chosenPath);
+        startActivity(playIntent);
         startActivityForResult(playIntent, MainActivity.REQUEST_PLAY_GAME);
     }
 
@@ -109,9 +106,7 @@ public class SinglePlayerMain extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == MainActivity.REQUEST_NEW_DESIGN && resultCode == RESULT_OK && null != data) {
-            MainActivity.addNewDesign(data);
-        }  else if (requestCode == MainActivity.REQUEST_PLAY_GAME && resultCode == RESULT_OK && null != data) {
+        if (requestCode == MainActivity.REQUEST_PLAY_GAME && resultCode == RESULT_OK && null != data) {
             // TODO- handle return of play results
         }
 

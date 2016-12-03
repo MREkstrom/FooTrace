@@ -9,6 +9,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Parcel;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Display;
 import android.view.View;
@@ -65,8 +66,8 @@ public class PlayGame extends AppCompatActivity implements SensorEventListener{
         _displayHeight = _gameView.getHeight();
 
         Intent modeIntent = getIntent();
-        String mode = modeIntent.getStringExtra("mode");
-        String pathName = modeIntent.getStringExtra("pathName");
+        String mode = modeIntent.getStringExtra("Mode");
+        String pathName = modeIntent.getStringExtra("PathName");
         switch(mode){
             case "SP":
                 _mode = SINGLE;

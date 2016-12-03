@@ -220,8 +220,7 @@ public class NewDesign extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int id) {
                                 EditText name = (EditText)saveDialogView.findViewById(R.id.trace_name);
                                 String path_name = name.getText().toString();
-                                Parcelable_Path parc = new Parcelable_Path(mDesignView.getPath(),path_name);
-                                resultIntent.putExtra("PathInfo", parc);
+                                MainActivity.traces.put(path_name, mDesignView.getPath());
                                 setResult(RESULT_OK, resultIntent);
                                 finish();
                             }
