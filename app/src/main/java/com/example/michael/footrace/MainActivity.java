@@ -11,6 +11,7 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final int REQUEST_NEW_DESIGN = 1;
     public static final int REQUEST_PLAY_GAME = 2;
 
     // TODO- global settings values and set/get methods

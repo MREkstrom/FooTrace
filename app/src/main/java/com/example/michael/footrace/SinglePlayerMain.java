@@ -103,7 +103,11 @@ public class SinglePlayerMain extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == MainActivity.REQUEST_PLAY_GAME && resultCode == RESULT_OK && null != data) {
+        if(requestCode == MainActivity.REQUEST_NEW_DESIGN){
+            /*Refresh activity to load in new traces*/
+            finish();
+            startActivity(getIntent());
+        } else if (requestCode == MainActivity.REQUEST_PLAY_GAME && resultCode == RESULT_OK && null != data) {
             // TODO- handle return of play results
         }
 
