@@ -7,10 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-
 import java.util.HashMap;
-
-//commit
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,12 +15,15 @@ public class MainActivity extends AppCompatActivity {
 
     // TODO- global settings values and set/get methods
     public static HashMap <String, Path> traces; //contains mappings of path names to traces
+    public static UserProfile prof;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         traces = new HashMap <String, Path>();
+        prof = new UserProfile("User", "Email@email.com");
 
         Typeface tf = Typeface.createFromAsset(getAssets(), "mvboli.ttf");
         Button[] buttons = {(Button) findViewById(R.id.spButton),

@@ -18,18 +18,27 @@ public class Settings extends AppCompatActivity {
     private int _red;
     private int _green;
     private int _blue;
+    private UserProfile prof;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        _red = 0;
-        _green = 0;
-        _blue = 0;
+        _username = MainActivity.prof.get_displayName();
+        _email = MainActivity.prof.get_emailAddress();
+        _red = MainActivity.prof.get_red();
+        _green = MainActivity.prof.get_green();
+        _blue = MainActivity.prof.get_blue();
 
         TextView swatch = (TextView)findViewById(R.id.colorSwatch);
         swatch.setBackgroundColor(Color.rgb(_red,_green,_blue));
+
+        TextView displayNameView = (TextView)findViewById(R.id.displayName);
+        displayNameView.setText(_username);
+
+        TextView emailView = (TextView)findViewById(R.id.emailAddress);
+        emailView.setText(_email);
     }
 
     // TODO - add settings options
@@ -156,6 +165,8 @@ public class Settings extends AppCompatActivity {
 
                         TextView swatch = (TextView) findViewById(R.id.colorSwatch);
                         swatch.setBackgroundColor(Color.rgb(_red,_green,_blue));
+
+                        MainActivity.prof.updateProfile(_username, _email, _red, _green, _blue);
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -169,9 +180,5 @@ public class Settings extends AppCompatActivity {
 
         alertDialog = builder.create();
         alertDialog.show();
-    }
-
-    private void updateProfile(){
-
     }
 }
