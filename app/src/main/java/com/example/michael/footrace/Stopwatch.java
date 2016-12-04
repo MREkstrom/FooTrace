@@ -17,6 +17,8 @@ public class Stopwatch implements Runnable {
     /*Start stopwatch*/
     public void start() {
         mIsRunning = true;
+        //Updates start time
+        mStartTime = System.currentTimeMillis();
     }
 
     /*Stop the stopwatch*/
