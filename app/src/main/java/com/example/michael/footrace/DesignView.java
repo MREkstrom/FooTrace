@@ -11,6 +11,7 @@ import android.view.View;
 
 public class DesignView extends View {
 
+    /*Initialize member variables*/
     private Path _path = new Path();
     private Paint _paint = new Paint();
     private float _prevPoint = -1;
@@ -30,6 +31,7 @@ public class DesignView extends View {
         init(attrs, defStyle);
     }
 
+    /*Set up default paint object*/
     private void init(AttributeSet attrs, int defStyleAttr){
         _paint.setColor(Color.BLACK);
         _paint.setStyle(Paint.Style.STROKE);
@@ -39,33 +41,40 @@ public class DesignView extends View {
         _paint.setStrokeJoin(Paint.Join.ROUND);
     }
 
+    /*returns path*/
     public Path getPath(){
         return _path;
     }
 
+    /*changes brush color*/
     public void setBrushColor(int red, int green, int blue){
         _paint.setColor(Color.rgb(red,green,blue));
         invalidate();
     }
 
+    /*Clears path*/
     public void clear() {
         _path.reset();
         _prevPoint = -1;
         invalidate();
     }
 
+    /*Draws path to canvas*/
     public void onDraw(Canvas canvas){
         super.onDraw(canvas);
 
         canvas.drawPath(_path,_paint);
     }
 
+    /*determines actions when user touches screen*/
     public boolean onTouchEvent(MotionEvent motionEvent){
         float touchX = motionEvent.getX();
         float touchY = motionEvent.getY();
 
         switch(motionEvent.getAction()){
             case MotionEvent.ACTION_DOWN:
+                /*connects lines for user if they are disconnected
+                * as you cannot trace disconnected lines*/
                 if(_prevPoint != -1){
                     _path.lineTo(touchX,touchY);
                 }

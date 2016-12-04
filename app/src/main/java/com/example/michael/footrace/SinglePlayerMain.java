@@ -22,6 +22,7 @@ import java.util.Set;
 
 public class SinglePlayerMain extends AppCompatActivity {
 
+    /*Used to store traces for list view*/
     private ArrayList<String> traceList = new ArrayList<String>();
 
     @Override
@@ -35,17 +36,21 @@ public class SinglePlayerMain extends AppCompatActivity {
             b.setTypeface(tf);
         }
 
+        /*Displays all created traces in a list which can be selected by user*/
         ListView lv = (ListView) findViewById(R.id.spDesignList);
         displayTraces(MainActivity.traces);
         lv.setAdapter(new ListAdapter(this, R.layout.path_list_item, traceList));
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                /*When path is chosen, start the game*/
                 playGame(traceList.get(position));
             }
         });
     }
 
+    /*Runs through all the traces in the hashmap and adds them to the traces list
+    * The traces list is used in the list view*/
     private void displayTraces(HashMap<String, Path> traces) {
         Set<String> paths = traces.keySet();
         for(String name : paths){
@@ -53,15 +58,18 @@ public class SinglePlayerMain extends AppCompatActivity {
         }
     }
 
+    /*Helps set up list view*/
     private class ListAdapter extends ArrayAdapter<String> {
         private int layout;
         private List<String> traces;
+
         private ListAdapter(Context context, int the_layout, List<String> designs) {
             super(context, the_layout, designs);
             traces = designs;
             layout = the_layout;
         }
 
+        /*Sets up and displays the list view*/
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
             Row rowHandler = null;
@@ -80,18 +88,20 @@ public class SinglePlayerMain extends AppCompatActivity {
             return convertView;
         }
     }
+    /*Represents individual rows within the list view*/
     public class Row {
         ImageView pathImage;
         TextView pathName;
     }
 
+    /*Create new design*/
     public void newDesign(View v){
         Intent designIntent = new Intent(SinglePlayerMain.this, NewDesign.class);
         startActivity(designIntent);
     }
-
-    // TODO- call this function from each list element, passing the Path or drawable to it (add params)
+    /*This method begins the process for playing the game*/
     public void playGame(String chosenPath){
+        /*Store path name and the mode (Single/multiplayer)*/
         Intent playIntent = new Intent(SinglePlayerMain.this, PlayGame.class);
         playIntent.putExtra("Mode","SP"); //SP for singleplayer, MP for multiplayer
         playIntent.putExtra("PathName", chosenPath);

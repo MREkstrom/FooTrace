@@ -1,8 +1,6 @@
 package com.example.michael.footrace;
 
-/**
- * Created by Dan on 12/1/2016.
- */
+/*Contains user profile information (Statistics, settings, etc)*/
 public class UserProfile {
     private String _displayName;
     private String _emailAddress;
@@ -24,6 +22,7 @@ public class UserProfile {
         _avgAcc = 0;
     }
 
+    /*Updates profile when edited by user*/
     public void updateProfile(String name, String email, int red, int green, int blue){
         _displayName = name;
         _emailAddress = email;
@@ -32,6 +31,7 @@ public class UserProfile {
         _blue = blue;
     }
 
+    /*Updates statistics after a game ends*/
     public void updateStatistics(){
         //TODO: record statistics on game result
     }

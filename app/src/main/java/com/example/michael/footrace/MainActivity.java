@@ -11,18 +11,19 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
+    /* Global variables*/
     public static final int REQUEST_NEW_DESIGN = 1;
     public static final int REQUEST_PLAY_GAME = 2;
 
-    // TODO- global settings values and set/get methods
     public static HashMap <String, Path> traces; //contains mappings of path names to traces
-    public static UserProfile prof;
+    public static UserProfile prof; // contains user profile information
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /*Initialize globals*/
         traces = new HashMap <String, Path>();
         prof = new UserProfile("User", "Email@email.com");
 
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == REQUEST_PLAY_GAME && resultCode == RESULT_OK && null != data) {
-            //Do something
+            //TODO: If necessary, process result of game
         }
     }
 

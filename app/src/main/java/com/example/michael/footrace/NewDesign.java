@@ -7,7 +7,6 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +16,7 @@ import android.widget.TextView;
 
 public class NewDesign extends AppCompatActivity {
 
+    /*Instance variables*/
     DesignView mDesignView;
     private int _red = 0;
     private int _green = 0;
@@ -48,12 +48,10 @@ public class NewDesign extends AppCompatActivity {
                 final int temp_green = _green;
                 final int temp_blue = _blue;
 
-                //builds alert dialog for clearing
+                //builds alert dialog for color
                 builder = new AlertDialog.Builder(this);
 
-                // Get the layout inflater. LayoutInflaters take a layout XML file and create its
-                // corresponding View objects. Never create LayoutInflaters directly. Always use the
-                // factory method getLayoutInflater. See https://developer.android.com/reference/android/view/LayoutInflater.html
+                // Get the layout inflater
                 inflater = this.getLayoutInflater();
 
                 // Inflate the dialog_color.xml layout and create the View
@@ -132,13 +130,9 @@ public class NewDesign extends AppCompatActivity {
                     public void onStopTrackingTouch(SeekBar seekBar) {  }
                 });
 
-                // This is the method that allows us to use our own custom view. We set the AlertDialog builder
-                // to the view we created with the inflater above
+                // Set custom view
                 builder.setView(colorDialogView)
-                        // Add action buttons
-                        //.setTitle("Color Picker")
                         .setCustomTitle(FormatUtilities.makeDialogTitle(new TextView(this), getAssets(), "Color Picker"))
-
                         .setPositiveButton("OK!", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
@@ -163,16 +157,13 @@ public class NewDesign extends AppCompatActivity {
                 //builds alert dialog for clearing
                 builder = new AlertDialog.Builder(this);
 
-                // Get the layout inflater. LayoutInflaters take a layout XML file and create its
-                // corresponding View objects. Never create LayoutInflaters directly. Always use the
-                // factory method getLayoutInflater. See https://developer.android.com/reference/android/view/LayoutInflater.html
+                // Get the layout inflater
                 inflater = this.getLayoutInflater();
 
-                // Inflate the dialog_color.xml layout and create the View
+                // Inflate the dialog_clear.xml layout and create the View
                 final View clearDialogView = inflater.inflate(R.layout.dialog_clear, null);
 
                 builder.setView(clearDialogView)
-
                         .setCustomTitle(FormatUtilities.makeDialogTitle(new TextView(this), getAssets(), "Clear Path"))
                         .setMessage("Do you want to clear your path?")
                         .setPositiveButton("OK!", new DialogInterface.OnClickListener() {
@@ -190,7 +181,6 @@ public class NewDesign extends AppCompatActivity {
 
                 alertDialog = builder.create();
 
-
                 alertDialog.show();
 
                 //Set message font
@@ -204,16 +194,13 @@ public class NewDesign extends AppCompatActivity {
                 //builds alert dialog for saving
                 builder = new AlertDialog.Builder(this);
 
-                // Get the layout inflater. LayoutInflaters take a layout XML file and create its
-                // corresponding View objects. Never create LayoutInflaters directly. Always use the
-                // factory method getLayoutInflater. See https://developer.android.com/reference/android/view/LayoutInflater.html
+                // Get the layout inflater
                 inflater = this.getLayoutInflater();
 
                 // Inflate the dialog_save.xml layout and create the View
                 final View saveDialogView = inflater.inflate(R.layout.dialog_save, null);
 
                 builder.setView(saveDialogView)
-                        // Add action buttons
                         .setCustomTitle(FormatUtilities.makeDialogTitle(new TextView(this), getAssets(), "Save Your Design"))
                         .setPositiveButton("OK!", new DialogInterface.OnClickListener() {
                             @Override

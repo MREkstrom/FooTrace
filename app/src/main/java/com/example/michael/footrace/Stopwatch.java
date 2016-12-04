@@ -2,38 +2,29 @@ package com.example.michael.footrace;
 
 import android.content.Context;
 
-/**
- * Stopwatch tracks timing for gameplay
- */
+/* This class is used as the main timer for gameplay*/
 public class Stopwatch implements Runnable {
 
     Context mContext; // getsContext passed in from activity
     long mStartTime; // contains start time (0)
     boolean mIsRunning; // true if game is in progress
 
-    /**
-     * Constructor for the class for normal usage
-     * @param context the Activity which is responsible fot this instance of class
-     */
     public Stopwatch(Context context) {
         mContext = context;
         mStartTime = 0;
     }
 
-    /**
-     * Starts the Stopwatch
-     */
+    /*Start stopwatch*/
     public void start() {
         mIsRunning = true;
     }
 
-    /**
-     * Stops the Stopwatch
-     */
+    /*Stop the stopwatch*/
     public void stop() {
         mIsRunning = false;
     }
 
+    /*thread which runs and updates stopwatch*/
     @Override
     public void run() {
         while(mIsRunning) {

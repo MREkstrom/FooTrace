@@ -25,6 +25,7 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        /*display user profile info*/
         _username = MainActivity.prof.get_displayName();
         _email = MainActivity.prof.get_emailAddress();
         _red = MainActivity.prof.get_red();
@@ -40,8 +41,6 @@ public class Settings extends AppCompatActivity {
         TextView emailView = (TextView)findViewById(R.id.emailAddress);
         emailView.setText(_email);
     }
-
-    // TODO - add settings options
 
     public void goBack(View view) {
         finish();
@@ -59,22 +58,22 @@ public class Settings extends AppCompatActivity {
         //builds alert dialog for clearing
         builder = new AlertDialog.Builder(this);
 
-        // Get the layout inflater. LayoutInflaters take a layout XML file and create its
-        // corresponding View objects. Never create LayoutInflaters directly. Always use the
-        // factory method getLayoutInflater. See https://developer.android.com/reference/android/view/LayoutInflater.html
+        // Get the layout inflater
         inflater = this.getLayoutInflater();
 
-        // Inflate the dialog_color.xml layout and create the View
+        // Inflate the dialog_settings.xml layout and create the View
         final View settingsDialogView = inflater.inflate(R.layout.dialog_settings, null);
 
         //Sets color swatch to selected path color
         TextView swatch = (TextView)settingsDialogView.findViewById(R.id.colorSwatch);
         swatch.setBackgroundColor(Color.rgb(_red,_green,_blue));
 
+        /*Set cursor to end of edit text view*/
         EditText dispText = (EditText) settingsDialogView.findViewById(R.id.displayName);
         dispText.setText(_username);
         dispText.setSelection(dispText.getText().length());
 
+        /*Set cursor to end of edit text view*/
         EditText emailText = (EditText) settingsDialogView.findViewById(R.id.emailAddress);
         emailText.setText(_email);
         emailText.setSelection(emailText.getText().length());
@@ -145,14 +144,11 @@ public class Settings extends AppCompatActivity {
         // This is the method that allows us to use our own custom view. We set the AlertDialog builder
         // to the view we created with the inflater above
         builder.setView(settingsDialogView)
-                // Add action buttons
-                .setTitle("Edit Settings")
-                //.setCustomTitle(FormatUtilities.makeDialogTitle(new TextView(this), getAssets(), "Color Picker"))
-
+                .setCustomTitle(FormatUtilities.makeDialogTitle(new TextView(this), getAssets(), "Edit Settings"))
                 .setPositiveButton("OK!", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        //Updates profile information
+                        /*Updates profile information*/
                         EditText user = (EditText)settingsDialogView.findViewById(R.id.displayName);
                         _username = user.getText().toString();
                         TextView dispText = (TextView) findViewById(R.id.displayName);
