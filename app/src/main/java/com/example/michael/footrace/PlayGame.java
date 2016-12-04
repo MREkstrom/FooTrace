@@ -35,12 +35,11 @@ public class PlayGame extends AppCompatActivity implements SensorEventListener{
     private float[] _gravity = {0,0,0};
     private float[] _linearAcceleration = {0,0,0};
 
-    // TODO - finish implementing gameplay and hook it up to the menus
-
-    // TODO - timer
     private Stopwatch _timer; // Stopwatch timer
     private Thread _timerThread;//Thread for Stopwatch
     private TextView _timeDisplay; // Text for stopwatch
+
+    // TODO - finish implementing gameplay and hook it up to the menus
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

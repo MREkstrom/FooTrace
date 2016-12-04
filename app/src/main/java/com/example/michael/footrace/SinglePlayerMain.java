@@ -106,7 +106,6 @@ public class SinglePlayerMain extends AppCompatActivity {
         Intent playIntent = new Intent(SinglePlayerMain.this, PlayGame.class);
         playIntent.putExtra("Mode","SP"); //SP for singleplayer, MP for multiplayer
         playIntent.putExtra("PathName", chosenPath);
-        startActivity(playIntent);
         startActivityForResult(playIntent, MainActivity.REQUEST_PLAY_GAME);
     }
 
