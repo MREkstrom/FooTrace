@@ -77,8 +77,8 @@ public class GameView extends View {
         _endY = coords[1];
 
         // Add circles marking start and end
-        _basePath.addCircle(_startX,_startY,_radius,null);
-        _basePath.addCircle(_endX,_endY,_radius,null);
+        _basePath.addCircle(_startX,_startY,_radius, Path.Direction.CW);
+        _basePath.addCircle(_endX,_endY,_radius,Path.Direction.CW);
     }
 
     public void setBasePath(Path path){

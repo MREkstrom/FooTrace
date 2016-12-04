@@ -9,7 +9,6 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.os.Parcel;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Display;
 import android.view.View;
@@ -80,7 +79,6 @@ public class PlayGame extends AppCompatActivity implements SensorEventListener{
         // Set the design to be traced
         Path basePath = MainActivity.traces.get(pathName);
         _gameView.setBasePath(basePath);
-
 
         new AlertDialog.Builder(this)
                 .setTitle("Press when ready!")
@@ -165,11 +163,13 @@ public class PlayGame extends AppCompatActivity implements SensorEventListener{
 
     @Override
     public void onPause(){
+        super.onPause();
         _sensorManager.unregisterListener(this); // Unregister sensor listener to avoid battery drain
     }
 
     @Override
     public void onResume(){
+        super.onResume();
         _sensorManager.registerListener(this, _accel, SensorManager.SENSOR_DELAY_GAME); // Re-register on focus regain
     }
 

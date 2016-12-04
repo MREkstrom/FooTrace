@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,7 +23,6 @@ import java.util.Set;
 
 public class SinglePlayerMain extends AppCompatActivity {
 
-    /*Used to store traces for list view*/
     private ArrayList<String> traceList = new ArrayList<String>();
 
     @Override
@@ -36,7 +36,7 @@ public class SinglePlayerMain extends AppCompatActivity {
             b.setTypeface(tf);
         }
 
-        /*Displays all created traces in a list which can be selected by user*/
+       /*Displays all created traces in a list which can be selected by user*/
         ListView lv = (ListView) findViewById(R.id.spDesignList);
         displayTraces(MainActivity.traces);
         lv.setAdapter(new ListAdapter(this, R.layout.path_list_item, traceList));
@@ -49,16 +49,16 @@ public class SinglePlayerMain extends AppCompatActivity {
         });
     }
 
-    /*Runs through all the traces in the hashmap and adds them to the traces list
-    * The traces list is used in the list view*/
+    /*Parses through list of traces and adds them to arraylist for listview*/
     private void displayTraces(HashMap<String, Path> traces) {
         Set<String> paths = traces.keySet();
+
         for(String name : paths){
             traceList.add(name);
         }
     }
 
-    /*Helps set up list view*/
+    /*Helps implement the list view class*/
     private class ListAdapter extends ArrayAdapter<String> {
         private int layout;
         private List<String> traces;
@@ -69,7 +69,7 @@ public class SinglePlayerMain extends AppCompatActivity {
             layout = the_layout;
         }
 
-        /*Sets up and displays the list view*/
+        /*sets up list of traces*/
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
             Row rowHandler = null;
@@ -88,18 +88,19 @@ public class SinglePlayerMain extends AppCompatActivity {
             return convertView;
         }
     }
-    /*Represents individual rows within the list view*/
+    /*Contains definition for row*/
     public class Row {
         ImageView pathImage;
         TextView pathName;
     }
 
-    /*Create new design*/
+    /*Allows user to create design from the single player screen*/
     public void newDesign(View v){
         Intent designIntent = new Intent(SinglePlayerMain.this, NewDesign.class);
-        startActivity(designIntent);
+        startActivityForResult(designIntent, MainActivity.REQUEST_NEW_DESIGN);
     }
-    /*This method begins the process for playing the game*/
+
+    /*Allows user to start playing game upon path selection*/
     public void playGame(String chosenPath){
         /*Store path name and the mode (Single/multiplayer)*/
         Intent playIntent = new Intent(SinglePlayerMain.this, PlayGame.class);
@@ -120,7 +121,5 @@ public class SinglePlayerMain extends AppCompatActivity {
         } else if (requestCode == MainActivity.REQUEST_PLAY_GAME && resultCode == RESULT_OK && null != data) {
             // TODO- handle return of play results
         }
-
-
     }
 }
