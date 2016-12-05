@@ -34,12 +34,14 @@ public class Stopwatch implements Runnable {
             //Elapsed time
             long e_time = System.currentTimeMillis() - mStartTime;
 
-            //converts time into seconds and milliseconds
+            //converts time into minutes,  seconds and milliseconds
+            int minutes = (int) ((e_time / (60000)) % 60);
             int seconds = (int) (e_time / 1000) % 60;
             int millis = (int) e_time % 1000;
 
             //updates the timer text on the activity passed in
-            ((PlayGame) mContext).updateTimerText(String.format("Time: %02d:%03d", seconds, millis));
+            ((PlayGame) mContext).updateTimerText(
+                    String.format("Time: %02d:%02d:%03d", minutes, seconds, millis));
 
             //Apparently this helps limit CPU usage
             try {
