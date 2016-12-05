@@ -21,6 +21,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
+import static com.example.michael.footrace.MainActivity.button_sound;
+
 public class SinglePlayerMain extends AppCompatActivity {
 
     private ArrayList<String> traceList = new ArrayList<String>();
@@ -44,6 +46,7 @@ public class SinglePlayerMain extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 /*When path is chosen, start the game*/
+                button_sound.start();
                 playGame(traceList.get(position));
             }
         });
@@ -96,6 +99,7 @@ public class SinglePlayerMain extends AppCompatActivity {
 
     /*Allows user to create design from the single player screen*/
     public void newDesign(View v){
+        button_sound.start();
         Intent designIntent = new Intent(SinglePlayerMain.this, NewDesign.class);
         startActivityForResult(designIntent, MainActivity.REQUEST_NEW_DESIGN);
     }

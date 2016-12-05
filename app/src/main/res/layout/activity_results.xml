@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:text="Results"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="29dp"
+        android:textColor="#000000"
+        android:textSize="48dp"
+        android:id="@+id/Results" />
+
+    <Button
+        android:text="Done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="67dp"
+        android:id="@+id/reults_done_button"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:id="@+id/score_value"
+        android:layout_alignBaseline="@+id/score_results_heading"
+        android:layout_alignBottom="@+id/score_results_heading"
+        android:layout_alignLeft="@+id/time_value"
+        android:layout_alignStart="@+id/time_value" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:id="@+id/acurracy_value"
+        android:layout_alignBaseline="@+id/accuracy_reults_heading"
+        android:layout_alignBottom="@+id/accuracy_reults_heading"
+        android:layout_alignLeft="@+id/time_value"
+        android:layout_alignStart="@+id/time_value" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:id="@+id/time_value"
+        android:layout_marginLeft="45dp"
+        android:layout_marginStart="45dp"
+        android:layout_above="@+id/accuracy_reults_heading"
+        android:layout_alignLeft="@+id/reults_done_button"
+        android:layout_alignStart="@+id/reults_done_button" />
+
+    <TextView
+        android:text="Accuracy: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="49dp"
+        android:id="@+id/accuracy_reults_heading"
+        android:textSize="24dp"
+        android:layout_below="@+id/time_results_heading"
+        android:layout_toLeftOf="@+id/acurracy_value"
+        android:layout_toStartOf="@+id/acurracy_value" />
+
+    <TextView
+        android:text="Score: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:layout_marginTop="50dp"
+        android:id="@+id/score_results_heading"
+        android:layout_below="@+id/acurracy_value"
+        android:layout_toLeftOf="@+id/score_value"
+        android:layout_toStartOf="@+id/score_value" />
+
+    <TextView
+        android:text="Time: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="49dp"
+        android:id="@+id/time_results_heading"
+        android:textSize="24dp"
+        android:layout_below="@+id/Results"
+        android:layout_toLeftOf="@+id/acurracy_value"
+        android:layout_toStartOf="@+id/acurracy_value" />
+</RelativeLayout>

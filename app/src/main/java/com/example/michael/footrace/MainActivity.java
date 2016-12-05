@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import java.util.HashMap;
+import android.media.MediaPlayer;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +19,9 @@ public class MainActivity extends AppCompatActivity {
     public static HashMap <String, Path> traces; //contains mappings of path names to traces
     public static UserProfile prof; // contains user profile information
 
+    public static MediaPlayer button_sound; // creates button press sound
+    public static MediaPlayer background_music; // creates background music
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +30,11 @@ public class MainActivity extends AppCompatActivity {
         /*Initialize globals*/
         traces = new HashMap <String, Path>();
         prof = new UserProfile("User", "Email@email.com");
+
+        button_sound = MediaPlayer.create(this, R.raw.click3);
+        background_music = MediaPlayer.create(this, R.raw.background_music);
+
+        background_music.start();
 
         Typeface tf = Typeface.createFromAsset(getAssets(), "mvboli.ttf");
         Button[] buttons = {(Button) findViewById(R.id.spButton),
@@ -44,15 +53,19 @@ public class MainActivity extends AppCompatActivity {
 
         switch(v.getId()){
             case R.id.spButton:
+                button_sound.start();
                 nextScreen.setClass(MainActivity.this,SinglePlayerMain.class);
                 break;
             case R.id.mpButton:
+                button_sound.start();
                 nextScreen.setClass(MainActivity.this,MultiPlayerMain.class);
                 break;
             case R.id.drawButton:
+                button_sound.start();
                 nextScreen.setClass(MainActivity.this,NewDesign.class);
                 break;
             case R.id.settingsButton:
+                button_sound.start();
                 nextScreen.setClass(MainActivity.this,Settings.class);
                 break;
         }

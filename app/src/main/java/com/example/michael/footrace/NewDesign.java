@@ -14,6 +14,8 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import static com.example.michael.footrace.MainActivity.button_sound;
+
 public class NewDesign extends AppCompatActivity {
 
     /*Instance variables*/
@@ -53,6 +55,9 @@ public class NewDesign extends AppCompatActivity {
 
                 // Get the layout inflater
                 inflater = this.getLayoutInflater();
+
+                //Button press sound
+                button_sound.start();
 
                 // Inflate the dialog_color.xml layout and create the View
                 final View colorDialogView = inflater.inflate(R.layout.dialog_color, null);
@@ -160,6 +165,9 @@ public class NewDesign extends AppCompatActivity {
                 // Get the layout inflater
                 inflater = this.getLayoutInflater();
 
+                //Button press sound
+                button_sound.start();
+
                 // Inflate the dialog_clear.xml layout and create the View
                 final View clearDialogView = inflater.inflate(R.layout.dialog_clear, null);
 
@@ -196,6 +204,9 @@ public class NewDesign extends AppCompatActivity {
 
                 // Get the layout inflater
                 inflater = this.getLayoutInflater();
+
+                //Button press sound
+                button_sound.start();
 
                 // Inflate the dialog_save.xml layout and create the View
                 final View saveDialogView = inflater.inflate(R.layout.dialog_save, null);

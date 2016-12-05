@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import static com.example.michael.footrace.MainActivity.button_sound;
 import static com.example.michael.footrace.PlayGame.Mode.MULTI;
 import static com.example.michael.footrace.PlayGame.Mode.SINGLE;
 
@@ -144,14 +145,19 @@ public class PlayGame extends AppCompatActivity implements SensorEventListener{
         _timerThread.interrupt();
         _timerThread = null;
 
+        button_sound.start();
+
         //Captures ending time, can be passed to results screen
         String endTime = _timeDisplay.getText().toString();
+        endTime = endTime.substring(6, endTime.length());
 
 
-        Intent result = new Intent();
+        Intent result = new Intent(this, Results.class);
+        result.putExtra("time_results", endTime);
             //Put extras with score
 
         setResult(RESULT_OK, result);
+        startActivity(result);
         finish(); // possibly start new Activity for results, then return from that first? alert dialog?
     }
 
