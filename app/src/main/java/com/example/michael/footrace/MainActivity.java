@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static HashMap <String, Path> traces; //contains mappings of path names to traces
     public static UserProfile prof; // contains user profile information
+    public static HashMap <String, EndCoordinates> endCoords; // contain ending coords of paths
 
     public static MediaPlayer button_sound; // creates button press sound
     public static MediaPlayer background_music; // creates background music

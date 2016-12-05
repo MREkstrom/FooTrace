@@ -78,7 +78,7 @@ public class PlayGame extends AppCompatActivity implements SensorEventListener{
 
         // Set the design to be traced
         Path basePath = MainActivity.traces.get(pathName);
-        _gameView.setBasePath(basePath);
+        _gameView.setBasePath(basePath, pathName);
 
         new AlertDialog.Builder(this)
                 .setTitle("Press when ready!")

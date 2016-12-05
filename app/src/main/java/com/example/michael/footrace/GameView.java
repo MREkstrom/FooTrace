@@ -59,7 +59,7 @@ public class GameView extends View {
         _tracePaint.setStrokeJoin(Paint.Join.ROUND);
     }
 
-    private void pathInit(){
+    private void pathInit(String pathName){
         // Find starting point of the base path to use for the trace path
         float[] coords = {0f,0f};
         _pathMeasure = new PathMeasure(_basePath, false);
@@ -73,17 +73,17 @@ public class GameView extends View {
         _curY = _startY;
 
         _pathMeasure.getPosTan(_pathMeasure.getLength(), coords, null);
-        _endX = coords[0];
-        _endY = coords[1];
+        _endX = MainActivity.endCoords.get(pathName).getEndX();
+        _endY = MainActivity.endCoords.get(pathName).getEndY();
 
         // Add circles marking start and end
         _basePath.addCircle(_startX,_startY,_radius, Path.Direction.CW);
         _basePath.addCircle(_endX,_endY,_radius,Path.Direction.CW);
     }
 
-    public void setBasePath(Path path){
+    public void setBasePath(Path path, String pathName){
         _basePath = path;
-        pathInit();
+        pathInit(pathName);
         invalidate();
     }
 

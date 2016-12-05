@@ -14,7 +14,9 @@ public class DesignView extends View {
     /*Initialize member variables*/
     private Path _path = new Path();
     private Paint _paint = new Paint();
-    private float _prevPoint = -1;
+    private float _endPointX = -1;
+    private float _endPointY = -1;
+    private EndCoordinates _coords = new EndCoordinates(_endPointX, _endPointY);
 
     public DesignView(Context context) {
         super(context);
@@ -46,6 +48,11 @@ public class DesignView extends View {
         return _path;
     }
 
+    public void finalizeEndCoords(String path_name){
+        _coords.setCoords(_endPointX,_endPointY);
+        MainActivity.endCoords.put(path_name, _coords);
+    }
+
     /*changes brush color*/
     public void setBrushColor(int red, int green, int blue){
         _paint.setColor(Color.rgb(red,green,blue));
@@ -55,7 +62,8 @@ public class DesignView extends View {
     /*Clears path*/
     public void clear() {
         _path.reset();
-        _prevPoint = -1;
+        _endPointX = -1;
+        _endPointY = -1;
         invalidate();
     }
 
@@ -75,7 +83,7 @@ public class DesignView extends View {
             case MotionEvent.ACTION_DOWN:
                 /*connects lines for user if they are disconnected
                 * as you cannot trace disconnected lines*/
-                if(_prevPoint != -1){
+                if(_endPointX != -1){
                     _path.lineTo(touchX,touchY);
                 }
                 _path.moveTo(touchX,touchY);
@@ -83,7 +91,8 @@ public class DesignView extends View {
                 _path.lineTo(touchX,touchY);
             case MotionEvent.ACTION_UP:
                 _path.moveTo(touchX,touchY);
-                _prevPoint = touchX;
+                _endPointX = touchX;
+                _endPointY = touchY;
         }
 
         invalidate();

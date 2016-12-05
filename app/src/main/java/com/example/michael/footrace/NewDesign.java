@@ -219,6 +219,7 @@ public class NewDesign extends AppCompatActivity {
                                 EditText name = (EditText)saveDialogView.findViewById(R.id.trace_name);
                                 String path_name = name.getText().toString();
                                 MainActivity.traces.put(path_name, mDesignView.getPath());
+                                mDesignView.finalizeEndCoords(path_name);
                                 setResult(RESULT_OK, resultIntent);
                                 finish();
                             }
