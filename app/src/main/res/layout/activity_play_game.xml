@@ -18,13 +18,13 @@
         />
 
     <Button
-        android:text="Done"
+        android:text="Start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/doneButton"
-        android:onClick="done"
+        android:id="@+id/startAndStopButton"
+        android:onClick="startAndStop"
         android:background="@drawable/ovalbuttonstyle"/>
 
     <TextView

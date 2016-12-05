@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 
 import static com.example.michael.footrace.MainActivity.button_sound;
@@ -39,6 +40,8 @@ public class PlayGame extends AppCompatActivity implements SensorEventListener{
     private Stopwatch _timer; // Stopwatch timer
     private Thread _timerThread;//Thread for Stopwatch
     private TextView _timeDisplay; // Text for stopwatch
+
+    private boolean _gameStarted = false;
 
     // TODO - finish implementing gameplay and hook it up to the menus
 
@@ -79,21 +82,6 @@ public class PlayGame extends AppCompatActivity implements SensorEventListener{
         // Set the design to be traced
         Path basePath = MainActivity.traces.get(pathName);
         _gameView.setBasePath(basePath, pathName);
-
-        new AlertDialog.Builder(this)
-                .setTitle("Press when ready!")
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        start();
-                    }})
-                .setNegativeButton("Back", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        setResult(RESULT_CANCELED);
-                        finish();
-                    }
-                }).show();
 
         //Sets stopwatch textView
         _timeDisplay = (TextView) findViewById(R.id.stopwatch);
@@ -136,29 +124,36 @@ public class PlayGame extends AppCompatActivity implements SensorEventListener{
     }
 
     // Complete game and return to menu, show score screen
-    public void done (View v){
-        // TODO- "calculate" / save score and return
-        //stop timer
-        _timer.stop();
-
-        //stop the stopwatch thread
-        _timerThread.interrupt();
-        _timerThread = null;
+    public void startAndStop (View v){
 
         button_sound.start();
 
-        //Captures ending time, can be passed to results screen
-        String endTime = _timeDisplay.getText().toString();
-        endTime = endTime.substring(6, endTime.length());
+        if(_gameStarted == false){
+            start();
 
+            Button startStopButton = (Button)findViewById(R.id.startAndStopButton);
+            startStopButton.setText("Done");
+            _gameStarted = true;
+        } else {
+            //stop timer
+            _timer.stop();
 
-        Intent result = new Intent(this, Results.class);
-        result.putExtra("time_results", endTime);
+            //stop the stopwatch thread
+            _timerThread.interrupt();
+            _timerThread = null;
+
+            //Captures ending time, can be passed to results screen
+            String endTime = _timeDisplay.getText().toString();
+            endTime = endTime.substring(6, endTime.length());
+
+            Intent result = new Intent(this, Results.class);
+            result.putExtra("time_results", endTime);
             //Put extras with score
 
-        setResult(RESULT_OK, result);
-        startActivity(result);
-        finish(); // possibly start new Activity for results, then return from that first? alert dialog?
+            setResult(RESULT_OK, result);
+            startActivity(result);
+            finish();
+        }
     }
 
     @Override
