@@ -1,8 +1,6 @@
 package com.example.michael.footrace;
 
 import android.content.Intent;
-import android.graphics.Paint;
-import android.graphics.Path;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,11 +15,8 @@ public class MainActivity extends AppCompatActivity {
     public static final int REQUEST_NEW_DESIGN = 1;
     public static final int REQUEST_PLAY_GAME = 2;
 
-    public static HashMap <String, Path> traces; //contains mappings of path names to traces
-    public static HashMap <String, Paint> paints; //contains mappings of path names to traces
+    public static HashMap <String, UserTrace> userTraces; // contain ending coords of paths
     public static UserProfile prof; // contains user profile information
-    public static HashMap <String, EndCoordinates> endCoords; // contain ending coords of paths
-
     public static MediaPlayer button_sound; // creates button press sound
     public static MediaPlayer background_music; // creates background music
 
@@ -31,9 +26,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         /*Initialize globals*/
-        traces = new HashMap <String, Path>();
+        userTraces = new HashMap <String, UserTrace>();
         prof = new UserProfile("User", "Email@email.com");
-        endCoords = new HashMap<String, EndCoordinates>();
 
         button_sound = MediaPlayer.create(this, R.raw.click3);
         background_music = MediaPlayer.create(this, R.raw.background_music);

@@ -1,5 +1,7 @@
 package com.example.michael.footrace;
 
+import android.graphics.Color;
+
 /*Contains user profile information (Statistics, settings, etc)*/
 public class UserProfile {
     private String _displayName;
@@ -56,6 +58,8 @@ public class UserProfile {
         return _green;
     }
 
-
+    public int get_color(){
+        return Color.rgb(_red, _green, _blue);
+    }
 }
 

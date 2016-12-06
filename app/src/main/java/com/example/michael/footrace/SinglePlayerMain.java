@@ -40,7 +40,7 @@ public class SinglePlayerMain extends AppCompatActivity {
 
        /*Displays all created traces in a list which can be selected by user*/
         ListView lv = (ListView) findViewById(R.id.spDesignList);
-        displayTraces(MainActivity.traces);
+        displayTraces(MainActivity.userTraces);
         lv.setAdapter(new ListAdapter(this, R.layout.path_list_item, traceList));
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -53,7 +53,7 @@ public class SinglePlayerMain extends AppCompatActivity {
     }
 
     /*Parses through list of traces and adds them to arraylist for listview*/
-    private void displayTraces(HashMap<String, Path> traces) {
+    private void displayTraces(HashMap<String, UserTrace> traces) {
         Set<String> paths = traces.keySet();
 
         for(String name : paths){

@@ -10,10 +10,6 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
 
-/**
- * Created by JonSeibert on 11/29/16.
- */
-
 public class GameView extends View {
 
     private Path _basePath = new Path(); // The background design to trace
@@ -51,7 +47,7 @@ public class GameView extends View {
         _basePaint.setStrokeCap(Paint.Cap.ROUND);
         _basePaint.setStrokeJoin(Paint.Join.ROUND);
 
-        _tracePaint.setColor(Color.BLACK);
+        _tracePaint.setColor(MainActivity.prof.get_color());
         _tracePaint.setStyle(Paint.Style.STROKE);
         _tracePaint.setStrokeWidth(10);
         _tracePaint.setAntiAlias(true);
@@ -73,8 +69,8 @@ public class GameView extends View {
         _curY = _startY;
 
         _pathMeasure.getPosTan(_pathMeasure.getLength(), coords, null);
-        _endX = MainActivity.endCoords.get(pathName).getEndX();
-        _endY = MainActivity.endCoords.get(pathName).getEndY();
+        _endX = MainActivity.userTraces.get(pathName).getEndX();
+        _endY = MainActivity.userTraces.get(pathName).getEndY();
 
         // Add circles marking start and end
         _basePath.addCircle(_startX,_startY,_radius, Path.Direction.CW);
@@ -84,6 +80,16 @@ public class GameView extends View {
     public void setBasePath(Path path, String pathName){
         _basePath = path;
         pathInit(pathName);
+        invalidate();
+    }
+
+    public void setBasePaint(Paint paint){
+        if(paint.getColor() == _tracePaint.getColor()){
+            _basePaint.setColor(Color.GRAY);
+        } else {
+            _basePaint = paint;
+        }
+
         invalidate();
     }
 

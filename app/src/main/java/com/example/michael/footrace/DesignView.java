@@ -16,7 +16,7 @@ public class DesignView extends View {
     private Paint _paint = new Paint();
     private float _endPointX = -1;
     private float _endPointY = -1;
-    private EndCoordinates _coords = new EndCoordinates(_endPointX, _endPointY);
+    private UserTrace _usrTrc = new UserTrace();
 
     public DesignView(Context context) {
         super(context);
@@ -43,14 +43,12 @@ public class DesignView extends View {
         _paint.setStrokeJoin(Paint.Join.ROUND);
     }
 
-    /*returns path*/
-    public Path getPath(){
-        return _path;
+    public void finalizeTrace(){
+        _usrTrc.setAttributes(_path, _paint, _endPointX,_endPointY);
     }
 
-    public void finalizeEndCoords(String path_name){
-        _coords.setCoords(_endPointX,_endPointY);
-        MainActivity.endCoords.put(path_name, _coords);
+    public UserTrace getUserTrace(){
+        return _usrTrc;
     }
 
     /*changes brush color*/

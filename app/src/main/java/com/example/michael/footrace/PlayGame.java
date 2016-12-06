@@ -80,8 +80,10 @@ public class PlayGame extends AppCompatActivity implements SensorEventListener{
         } // MODES NOT USED YET
 
         // Set the design to be traced
-        Path basePath = MainActivity.traces.get(pathName);
-        _gameView.setBasePath(basePath, pathName);
+        UserTrace usrTrc = MainActivity.userTraces.get(pathName);
+
+        _gameView.setBasePath(usrTrc.getPath(), pathName);
+        _gameView.setBasePaint(usrTrc.getPaint());
 
         //Sets stopwatch textView
         _timeDisplay = (TextView) findViewById(R.id.stopwatch);
