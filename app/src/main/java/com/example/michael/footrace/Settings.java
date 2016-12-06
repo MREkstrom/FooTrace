@@ -18,7 +18,6 @@ public class Settings extends AppCompatActivity {
     private int _red;
     private int _green;
     private int _blue;
-    private UserProfile prof;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

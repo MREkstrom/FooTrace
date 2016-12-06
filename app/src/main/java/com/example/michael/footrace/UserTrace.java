@@ -6,6 +6,8 @@ import android.graphics.Path;
 /**
  * Created by Dan on 12/5/2016.
  */
+
+/*This class contains all the info about a specific user trace*/
 public class UserTrace {
     private Path _path;
     private Paint _paint;

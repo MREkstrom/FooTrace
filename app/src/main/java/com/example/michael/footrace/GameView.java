@@ -77,13 +77,16 @@ public class GameView extends View {
         _basePath.addCircle(_endX,_endY,_radius,Path.Direction.CW);
     }
 
+    //Sets up user path (accelerometer path)
     public void setBasePath(Path path, String pathName){
         _basePath = path;
         pathInit(pathName);
         invalidate();
     }
 
+    /*Sets up paint object for trace*/
     public void setBasePaint(Paint paint){
+        //If colors of both trace and user are same, change path color
         if(paint.getColor() == _tracePaint.getColor()){
             _basePaint.setColor(Color.GRAY);
         } else {
@@ -99,16 +102,6 @@ public class GameView extends View {
         _curY -= yForce; // Y increases down->up in axis, up-down in display
 
         _tracePath.lineTo(_curX,_curY);
-        invalidate();
-    }
-
-    public void setBaseColor(int red, int green, int blue){
-        _basePaint.setColor(Color.rgb(red,green,blue));
-        invalidate();
-    }
-
-    public void setTraceColor(int red, int green, int blue){
-        _tracePaint.setColor(Color.rgb(red,green,blue));
         invalidate();
     }
 

@@ -1,9 +1,6 @@
 package com.example.michael.footrace;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Path;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -82,6 +79,7 @@ public class PlayGame extends AppCompatActivity implements SensorEventListener{
         // Set the design to be traced
         UserTrace usrTrc = MainActivity.userTraces.get(pathName);
 
+        //Initializes path and paint objects
         _gameView.setBasePath(usrTrc.getPath(), pathName);
         _gameView.setBasePaint(usrTrc.getPaint());
 

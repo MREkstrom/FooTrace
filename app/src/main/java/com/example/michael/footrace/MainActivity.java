@@ -28,10 +28,10 @@ public class MainActivity extends AppCompatActivity {
         /*Initialize globals*/
         userTraces = new HashMap <String, UserTrace>();
         prof = new UserProfile("User", "Email@email.com");
-
         button_sound = MediaPlayer.create(this, R.raw.click3);
         background_music = MediaPlayer.create(this, R.raw.background_music);
 
+        //start background music
         background_music.start();
 
         Typeface tf = Typeface.createFromAsset(getAssets(), "mvboli.ttf");
