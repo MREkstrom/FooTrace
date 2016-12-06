@@ -1,14 +1,16 @@
 package com.example.michael.footrace;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
-import android.graphics.Typeface;
+import android.media.AudioManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -20,6 +22,9 @@ public class Settings extends AppCompatActivity {
     private int _red;
     private int _green;
     private int _blue;
+
+    public static int lastKnownBackground;
+    public static int lastKnownSFX;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,21 +47,74 @@ public class Settings extends AppCompatActivity {
         TextView emailView = (TextView)findViewById(R.id.emailAddress);
         emailView.setText(_email);
 
-        Typeface tf = Typeface.createFromAsset(getAssets(), "mvboli.ttf");
-        Button[] buttons = {(Button) findViewById(R.id.backButton),
-                (Button) findViewById(R.id.editButton)};
-        for (Button b : buttons) {
-            b.setTypeface(tf);
-        }
-        TextView[] views = {(TextView) findViewById(R.id.displayNameField),
-                //(TextView) findViewById(R.id.displayName),
-                (TextView) findViewById(R.id.emailAddressField),
-                //(TextView) findViewById(R.id.emailAddress),
-                (TextView) findViewById(R.id.colorSwatchTitle)};
-        for (TextView tv : views) {
-            tv.setTypeface(tf);
+        final AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
-        }
+        SeekBar _backgroundMusic = (SeekBar) findViewById(R.id.background_slider);
+        SeekBar _SFXMusic = (SeekBar) findViewById(R.id.SFX_slider);
+
+        _backgroundMusic.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
+        _backgroundMusic.setProgress(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC));
+        _backgroundMusic.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, i, 0);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        CheckBox background = (CheckBox) findViewById(R.id.Background_checkbox);
+        background.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(compoundButton.isChecked()){
+                    lastKnownBackground = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+                    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, 0);
+                } else{
+                    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, lastKnownBackground, 0);
+                }
+            }
+        });
+
+        _SFXMusic.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
+        _SFXMusic.setProgress(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC));
+        _SFXMusic.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, i, 0);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        CheckBox SFX = (CheckBox) findViewById(R.id.SFX_checkbox);
+        SFX.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(compoundButton.isChecked()){
+                    lastKnownSFX = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+                    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, 0);
+                } else{
+                    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, lastKnownSFX, 0);
+                }
+            }
+        });
     }
 
     public void goBack(View view) {
