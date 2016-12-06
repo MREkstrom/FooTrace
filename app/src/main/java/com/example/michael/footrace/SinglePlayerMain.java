@@ -2,6 +2,8 @@ package com.example.michael.footrace;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -34,6 +36,11 @@ public class SinglePlayerMain extends AppCompatActivity {
         Button[] buttons = {(Button) findViewById(R.id.spDrawButton)};
         for (Button b : buttons) {
             b.setTypeface(tf);
+        }
+        TextView[] views = {(TextView) findViewById(R.id.spTitle)};
+        for (TextView tv : views) {
+            tv.setTypeface(tf);
+            tv.setTextSize(30f);
         }
 
        /*Displays all created traces in a list which can be selected by user*/
@@ -80,6 +87,12 @@ public class SinglePlayerMain extends AppCompatActivity {
                 Row row = new Row();
                 row.pathImage = (ImageView) convertView.findViewById(R.id.pathImage);
                 row.pathName = (TextView) convertView.findViewById(R.id.pathName);
+                Typeface tf = Typeface.createFromAsset(getAssets(), "mvboli.ttf");
+                row.pathName.setTypeface(tf);
+
+
+
+
                 convertView.setTag(row);
             }
             rowHandler = (Row) convertView.getTag();

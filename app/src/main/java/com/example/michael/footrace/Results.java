@@ -39,5 +39,20 @@ public class Results extends AppCompatActivity{
             }
         });
 
+        //Set typeface of buttons and text views
+        Typeface tf = Typeface.createFromAsset(getAssets(), "mvboli.ttf");
+        Button[] buttons = {(Button) findViewById(R.id.reults_done_button)};
+        for (Button b : buttons) {
+            b.setTypeface(tf);
+        }
+        TextView[] views = {(TextView) findViewById(R.id.Results),
+                (TextView) findViewById(R.id.time_results_heading),
+                (TextView) findViewById(R.id.accuracy_reults_heading),
+                (TextView) findViewById(R.id.score_results_heading)};
+        for (TextView tv : views) {
+            tv.setTypeface(tf);
+
+        }
+
     }
 }
