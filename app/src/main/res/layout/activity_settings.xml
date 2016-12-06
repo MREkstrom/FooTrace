@@ -15,40 +15,75 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/displayNameField"
-        android:text="Display Name:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:layout_marginBottom="25dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/displayName"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:layout_marginBottom="25dp"
-        android:text="Username!!!"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/emailAddressField"
         android:text="Email Address:"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:layout_marginBottom="25dp"
-        android:layout_below="@id/displayNameField"/>
+        android:layout_below="@+id/displayNameField"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="33dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/emailAddress"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:layout_marginBottom="25dp"
+        android:text="Email!!!"
+        android:layout_above="@+id/colorSwatchTitle"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@id/displayNameField"
-        android:text="Email!!!"/>
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/displayName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:text="Username!!!"
+        android:layout_marginTop="62dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/displayNameField"
+        android:text="Display Name:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_alignBaseline="@+id/displayName"
+        android:layout_alignBottom="@+id/displayName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:id="@+id/profile_settings"
+        android:textColor="#000000"
+        android:textSize="30dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit"
+        android:id="@+id/editButton"
+        android:onClick="editSettings"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Main Menu"
+        android:id="@+id/backButton"
+        android:onClick="goBack"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="70dp"
@@ -56,38 +91,111 @@
         android:id="@+id/colorSwatchTitle"
         android:text="Color:"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:layout_marginTop="25dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/emailAddressField"/>
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/emailAddressField"
+        android:layout_toRightOf="@+id/displayNameField"
+        android:layout_toEndOf="@+id/displayNameField" />
 
     <TextView
         android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:id="@+id/colorSwatch"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="17dp"
         android:padding="20dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="25dp"
-        android:layout_below="@id/colorSwatchTitle"/>
+        android:layout_below="@+id/colorSwatchTitle"
+        android:layout_centerHorizontal="true" />
 
-    <Button
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:id="@+id/view"
+        android:layout_alignTop="@+id/audio_settings"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"></View>
+
+    <TextView
+        android:text="Audio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Edit"
-        android:id="@+id/editButton"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="editSettings"/>
+        android:layout_marginTop="21dp"
+        android:id="@+id/audio_settings"
+        android:textSize="30dp"
+        android:textColor="#000000"
+        android:layout_below="@+id/colorSwatch"
+        android:layout_centerHorizontal="true" />
 
-    <Button
+
+    <TextView
+        android:text="Sound Effects:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Main Menu"
-        android:id="@+id/backButton"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/background_music_slider"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:onClick="goBack"/>
+        android:layout_marginTop="38dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:id="@+id/SFX_music_slider"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:text="Background:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:id="@+id/background_music_slider"
+        android:layout_below="@+id/audio_settings"
+        android:layout_alignParentLeft="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_alignParentStart="true"
+        android:textColor="#000000"/>
+
+    <SeekBar
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/SFX_music_slider"
+        android:id="@+id/SFX_slider"
+        android:layout_toRightOf="@+id/SFX_music_slider"
+        android:max="100"
+        android:progress="100" />
+
+    <SeekBar
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/background_slider"
+        android:layout_above="@+id/SFX_music_slider"
+        android:layout_toRightOf="@+id/SFX_music_slider"
+        android:max="100"
+        android:progress="100" />
+
+    <TextView
+        android:text="Mute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mute_textview"
+        android:layout_above="@+id/background_slider"
+        android:textColor="#000000"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="12dp" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Background_checkbox"
+        android:layout_alignBaseline="@+id/background_music_slider"
+        android:layout_alignBottom="@+id/background_music_slider"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/SFX_checkbox"
+        android:layout_alignBaseline="@+id/SFX_music_slider"
+        android:layout_alignBottom="@+id/SFX_music_slider"
+        android:layout_alignLeft="@+id/mute_textview"
+        android:layout_alignStart="@+id/mute_textview" />
+
 
 </RelativeLayout>

@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     public static MediaPlayer button_sound; // creates button press sound
     public static MediaPlayer background_music; // creates background music
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,10 +29,12 @@ public class MainActivity extends AppCompatActivity {
         /*Initialize globals*/
         userTraces = new HashMap <String, UserTrace>();
         prof = new UserProfile("User", "Email@email.com");
+
         button_sound = MediaPlayer.create(this, R.raw.click3);
         background_music = MediaPlayer.create(this, R.raw.background_music);
 
-        //start background music
+        //start background music and allow it to loop
+        background_music.setLooping(true);
         background_music.start();
 
         Typeface tf = Typeface.createFromAsset(getAssets(), "mvboli.ttf");
@@ -79,6 +82,13 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == REQUEST_PLAY_GAME && resultCode == RESULT_OK && null != data) {
             //TODO: If necessary, process result of game
         }
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        //background_music.release();
+        //button_sound.release();
     }
 
 }
