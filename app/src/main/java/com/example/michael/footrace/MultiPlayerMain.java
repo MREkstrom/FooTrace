@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MultiPlayerMain extends AppCompatActivity {
 
@@ -19,6 +20,12 @@ public class MultiPlayerMain extends AppCompatActivity {
                 (Button) findViewById(R.id.hostButton)};
         for (Button b : buttons) {
             b.setTypeface(tf);
+        }
+
+        TextView[] views = {(TextView) findViewById(R.id.mpMainTitle)};
+        for (TextView tv : views) {
+            tv.setTypeface(tf);
+            tv.setTextSize(30f);
         }
     }
 

@@ -23,16 +23,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/displayName"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:layout_marginBottom="25dp"
-        android:text="Username!!!"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/emailAddressField"
         android:text="Email Address:"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -78,7 +68,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:onClick="editSettings"/>
+        android:onClick="editSettings"
+        android:background="@drawable/beveledsquarebuttonstyle"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -88,6 +79,17 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:onClick="goBack"/>
+        android:onClick="goBack"
+        android:background="@drawable/beveledsquarebuttonstyle"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/displayName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:text="Username!!!"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

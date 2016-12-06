@@ -19,28 +19,35 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/mpMainTitle"/>
+        android:id="@+id/mpMainTitle"/><![CDATA[
+
+    />
+
+
+
+    ]]>
 
     <Button
         android:text="Join"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/mpMainTitle"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="83dp"
+        android:layout_marginTop="163dp"
         android:id="@+id/joinButton"
         android:onClick="onMPMainButtonClick"
-        android:background="@drawable/ovalbuttonstyle"/>/>
+        android:background="@drawable/beveledsquarebuttonstyle"
+        android:layout_below="@+id/mpMainTitle"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:text="Host"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/joinButton"
-        android:layout_alignLeft="@+id/joinButton"
-        android:layout_alignStart="@+id/joinButton"
-        android:layout_marginTop="124dp"
+        android:layout_marginTop="62dp"
         android:id="@+id/hostButton"
         android:onClick="onMPMainButtonClick"
-        android:background="@drawable/ovalbuttonstyle"/>/>
+        android:background="@drawable/beveledsquarebuttonstyle"
+        android:layout_below="@+id/joinButton"
+        android:layout_alignLeft="@+id/joinButton"
+        android:layout_alignStart="@+id/joinButton" />
+    />
 </RelativeLayout>

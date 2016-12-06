@@ -31,7 +31,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:onClick="onDesignButtonClick"
-        android:background="@drawable/ovalbuttonstyle"/>
+        android:background="@drawable/beveledsquarebuttonstyle"/>
 
     <ImageButton
         android:layout_width="wrap_content"
