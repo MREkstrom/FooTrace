@@ -8,6 +8,7 @@ import android.graphics.Path;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.RelativeLayout;
 
 public class DesignView extends View {
 
@@ -17,6 +18,7 @@ public class DesignView extends View {
     private float _endPointX = -1;
     private float _endPointY = -1;
     private UserTrace _usrTrc = new UserTrace();
+    private boolean drawMap = false;
 
     public DesignView(Context context) {
         super(context);
@@ -95,6 +97,18 @@ public class DesignView extends View {
 
         invalidate();
         return true;
+    }
+
+    public void toggleMap() {
+        drawMap = ! drawMap;
+        RelativeLayout rel = (RelativeLayout) findViewById(R.id.activity_new_design);
+        if (drawMap) {
+            this.setBackgroundResource(R.drawable.mapcropped);
+        } else {
+            this.setBackgroundColor(Color.WHITE);
+        }
+
+
     }
 
 }

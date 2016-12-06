@@ -238,8 +238,8 @@ public class NewDesign extends AppCompatActivity {
 
                 break;
             case R.id.mapToggleButton:
-                // TODO - add/remove map to DesignView background
-
+                // TODO - actually do a google map call
+                mDesignView.toggleMap();
                 break;
         }
     }
