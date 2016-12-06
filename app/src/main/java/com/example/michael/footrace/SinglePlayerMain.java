@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -63,6 +65,7 @@ public class SinglePlayerMain extends AppCompatActivity {
 
         for(String name : paths){
             traceList.add(name);
+            //traces.get(name).getPath();
         }
     }
 
@@ -90,7 +93,15 @@ public class SinglePlayerMain extends AppCompatActivity {
                 Typeface tf = Typeface.createFromAsset(getAssets(), "mvboli.ttf");
                 row.pathName.setTypeface(tf);
 
+                //Draw the path to the ImageView
+                Path path = MainActivity.userTraces.get(getItem(position)).getPath();
+                Paint paint = MainActivity.userTraces.get(getItem(position)).getPaint();
 
+                Bitmap tempBmp = Bitmap.createBitmap(950, 950, Bitmap.Config.RGB_565);
+                Canvas tempCan = new Canvas(tempBmp);
+                tempCan.drawARGB(255, 191, 228, 179);
+                tempCan.drawPath(path, paint);
+                row.pathImage.setImageBitmap(tempBmp);
 
 
                 convertView.setTag(row);
