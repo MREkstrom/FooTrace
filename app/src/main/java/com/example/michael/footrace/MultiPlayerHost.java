@@ -128,7 +128,7 @@ public class MultiPlayerHost extends AppCompatActivity {
 
     public void broadcastGame(String chosenPath){
         /*Store path name and the mode (Single/multiplayer)*/
-        Intent playIntent = new Intent(MultiPlayerHost.this, PlayGame.class);
+        Intent playIntent = new Intent(MultiPlayerHost.this, BroadcastGame.class);
         playIntent.putExtra("PathName", chosenPath);
         startActivityForResult(playIntent, MainActivity.REQUEST_BROADCAST);
     }
