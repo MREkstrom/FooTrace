@@ -19,11 +19,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="12dp"
-        android:id="@+id/spTitle"/><![CDATA[
-
-    />
-
-    ]]>
+        android:id="@+id/spTitle"/>
 
     <ListView
         android:layout_width="match_parent"

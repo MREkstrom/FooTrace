@@ -74,6 +74,7 @@
         android:onClick="editSettings"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
+        android:background="@drawable/beveledsquarebuttonstyle"
         android:layout_alignParentEnd="true" />
 
     <Button
@@ -82,6 +83,7 @@
         android:text="Main Menu"
         android:id="@+id/backButton"
         android:onClick="goBack"
+        android:background="@drawable/beveledsquarebuttonstyle"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
