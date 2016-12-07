@@ -1,17 +1,12 @@
 package com.example.michael.footrace;
 
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import static com.example.michael.footrace.MainActivity.button_sound;
@@ -68,6 +63,7 @@ public class BroadcastGame extends AppCompatActivity {
 
     //Cancels Hosting
     public void cancelHost(){
+        button_sound.start();
         finish();
     }
 }
