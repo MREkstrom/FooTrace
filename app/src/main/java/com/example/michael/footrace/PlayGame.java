@@ -101,7 +101,7 @@ public class PlayGame extends AppCompatActivity implements SensorEventListener{
 
         // Apply a high-pass filter to the motion to remove the effect of gravity.
         // Code stolen from official Android SensorEvent tutorial
-        final float alpha = (float) 0.8;
+        final float alpha = (float) 1.0;
 
         _gravity[0] = alpha * _gravity[0] + (1 - alpha) * event.values[0];
         _gravity[1] = alpha * _gravity[1] + (1 - alpha) * event.values[1];
