@@ -1,6 +1,10 @@
 package com.example.michael.footrace;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -11,6 +15,7 @@ import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import static com.example.michael.footrace.MainActivity.button_sound;
@@ -20,6 +25,9 @@ import static com.example.michael.footrace.PlayGame.Mode.SINGLE;
 public class PlayGame extends AppCompatActivity implements SensorEventListener{
 
     public enum Mode {SINGLE, MULTI};
+
+    AnimatedView animatedView = null;
+    ShapeDrawable mDrawable = new ShapeDrawable();
 
     private WindowManager _windowManager;
     private Display _display;
@@ -184,5 +192,29 @@ public class PlayGame extends AppCompatActivity implements SensorEventListener{
                 _timeDisplay.setText(timeAsText);
             }
         });
+    }
+
+    public class AnimatedView extends ImageView {
+
+        static final int width = 50;
+        static final int height = 50;
+
+        public AnimatedView(Context context) {
+            super(context);
+            // TODO Auto-generated constructor stub
+
+            mDrawable = new ShapeDrawable(new OvalShape());
+            mDrawable.getPaint().setColor(0xffffAC23);
+            mDrawable.setBounds((int) _gameView._startX,(int) _gameView._startY,(int) _gameView._startX + width, (int)_gameView._startY + height);
+
+        }
+
+        @Override
+        protected void onDraw(Canvas canvas) {
+
+            mDrawable.setBounds((int) _gameView._startX,(int) _gameView._startY,(int) _gameView._startX + width, (int)_gameView._startY + height);
+            mDrawable.draw(canvas);
+            invalidate();
+        }
     }
 }

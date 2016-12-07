@@ -20,7 +20,7 @@ public class GameView extends View {
 
     private PathMeasure _pathMeasure;
 
-    private float _startX, _startY, _curX, _curY, _endX, _endY;
+    public static float _startX, _startY, _curX, _curY, _endX, _endY;
 
     private float _radius = 15;
 
