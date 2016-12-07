@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     /* Global variables*/
     public static final int REQUEST_NEW_DESIGN = 1;
     public static final int REQUEST_PLAY_GAME = 2;
+    public static final int REQUEST_BROADCAST = 3;
 
     public static HashMap <String, UserTrace> userTraces; // contain ending coords of paths
     public static UserProfile prof; // contains user profile information
