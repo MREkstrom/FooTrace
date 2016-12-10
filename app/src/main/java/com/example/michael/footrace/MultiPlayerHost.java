@@ -62,8 +62,9 @@ public class MultiPlayerHost extends AppCompatActivity {
     }
 
     public void newDesign(View v){
+        button_sound.start();
         Intent designIntent = new Intent(MultiPlayerHost.this, NewDesign.class);
-        startActivity(designIntent);
+        startActivityForResult(designIntent, MainActivity.REQUEST_NEW_DESIGN);
     }
 
     /*Parses through list of traces and adds them to arraylist for listview*/
@@ -131,5 +132,18 @@ public class MultiPlayerHost extends AppCompatActivity {
         Intent playIntent = new Intent(MultiPlayerHost.this, BroadcastGame.class);
         playIntent.putExtra("PathName", chosenPath);
         startActivityForResult(playIntent, MainActivity.REQUEST_BROADCAST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == MainActivity.REQUEST_NEW_DESIGN){
+            /*Refresh activity to load in new traces*/
+            finish();
+            startActivity(getIntent());
+        } else if (requestCode == MainActivity.REQUEST_BROADCAST && resultCode == RESULT_OK && null != data) {
+            // TODO- handle return of play results
+        }
     }
 }
