@@ -47,6 +47,7 @@ public class PlayGame extends AppCompatActivity implements SensorEventListener{
     private TextView _timeDisplay; // Text for stopwatch
 
     private boolean _gameStarted = false;
+    private String _pathName;
 
     // TODO - finish implementing gameplay and hook it up to the menus
 
@@ -74,7 +75,7 @@ public class PlayGame extends AppCompatActivity implements SensorEventListener{
 
         Intent modeIntent = getIntent();
         String mode = modeIntent.getStringExtra("Mode");
-        String pathName = modeIntent.getStringExtra("PathName");
+        _pathName = modeIntent.getStringExtra("PathName");
         switch(mode){
             case "SP":
                 _mode = SINGLE;
@@ -85,10 +86,10 @@ public class PlayGame extends AppCompatActivity implements SensorEventListener{
         } // MODES NOT USED YET
 
         // Set the design to be traced
-        UserTrace usrTrc = MainActivity.userTraces.get(pathName);
+        UserTrace usrTrc = MainActivity.userTraces.get(_pathName);
 
         //Initializes path and paint objects
-        _gameView.setBasePath(usrTrc.getPath(), pathName);
+        _gameView.setBasePath(usrTrc.getPath(), _pathName);
         _gameView.setBasePaint(usrTrc.getPaint());
 
         //Sets stopwatch textView
@@ -99,6 +100,9 @@ public class PlayGame extends AppCompatActivity implements SensorEventListener{
     @Override
     public void onSensorChanged(SensorEvent event){
 
+        if(!_gameStarted){ //Do not run sensor updates until game begins
+            return;
+        }
         // Apply a high-pass filter to the motion to remove the effect of gravity.
         // Code stolen from official Android SensorEvent tutorial
         final float alpha = (float) 0.8;
@@ -156,7 +160,8 @@ public class PlayGame extends AppCompatActivity implements SensorEventListener{
 
             Intent result = new Intent(this, Results.class);
             result.putExtra("time_results", endTime);
-            //Put extras with score
+            //Put extras with score and path name, for retry
+            result.putExtra("PathName",_pathName);
 
             setResult(RESULT_OK, result);
             startActivity(result);
