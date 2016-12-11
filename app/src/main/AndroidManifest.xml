@@ -30,7 +30,8 @@
         </activity>
         <activity android:name=".MultiPlayerJoin">
         </activity>
-        <activity android:name=".PlayGame">
+        <activity android:name=".PlayGame"
+            android:screenOrientation="portrait">
         </activity>
         <activity android:name=".Results">
         </activity>

@@ -75,6 +75,8 @@ public class GameView extends View {
         // Add circles marking start and end
         _basePath.addCircle(_startX,_startY,_radius, Path.Direction.CW);
         _basePath.addCircle(_endX,_endY,_radius,Path.Direction.CW);
+
+        _tracePath.addCircle(_startX,_startY,_radius/3, Path.Direction.CW);
     }
 
     //Sets up user path (accelerometer path)

@@ -36,9 +36,10 @@
         android:layout_gravity="center_horizontal"
         android:ellipsize="end"
         android:scrollbars="none"
+        android:background="#ffffff"
         android:text="Time: 00:00:000"
         android:textAlignment="center"
         android:textColor="#ff0019"
-        android:textSize="48dp"/>
+        android:textSize="42dp"/>
 
 </RelativeLayout>

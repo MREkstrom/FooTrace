@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/emailAddressField"
-        android:text="Email Address:"
+        android:text="Email:"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:layout_below="@+id/displayNameField"
         android:layout_alignParentLeft="true"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/emailAddress"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:text="Email!!!"
+        android:text="CMSC434@umd.edu"
         android:layout_above="@+id/colorSwatchTitle"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/displayName"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:text="Username!!!"
+        android:text="HCIL!"
         android:layout_marginTop="62dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/displayNameField"
-        android:text="Display Name:"
+        android:text="Name:"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:layout_alignBaseline="@+id/displayName"
         android:layout_alignBottom="@+id/displayName"
@@ -94,9 +94,8 @@
         android:text="Color:"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:layout_marginTop="16dp"
-        android:layout_below="@+id/emailAddressField"
-        android:layout_toRightOf="@+id/displayNameField"
-        android:layout_toEndOf="@+id/displayNameField" />
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/emailAddressField" />
 
     <TextView
         android:layout_width="70dp"

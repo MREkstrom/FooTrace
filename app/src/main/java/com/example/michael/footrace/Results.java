@@ -18,13 +18,16 @@ public class Results extends AppCompatActivity{
 
     private TextView _timeResultValue;
     private Button _doneButton;
+    private Button _retryButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
 
-        String time_value = getIntent().getStringExtra("time_results");
+        Intent resultIntent = getIntent();
+        String time_value = resultIntent.getStringExtra("time_results");
+        final String pathName = resultIntent.getStringExtra("PathName");
 
         _timeResultValue = (TextView) findViewById(R.id.time_value);
         System.out.println(time_value);
@@ -38,6 +41,18 @@ public class Results extends AppCompatActivity{
                 finish();
             }
         });
+
+        _retryButton = (Button) findViewById(R.id.results_retry_button);
+        _retryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                Intent retryIntent = new Intent(Results.this, PlayGame.class);
+                retryIntent.putExtra("Mode","SP").putExtra("PathName",pathName);
+                startActivity(retryIntent);
+                finish();
+            }
+        });
+
 
         //Set typeface of buttons and text views
         Typeface tf = Typeface.createFromAsset(getAssets(), "mvboli.ttf");
