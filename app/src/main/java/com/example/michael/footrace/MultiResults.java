@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import static com.example.michael.footrace.MainActivity.button_sound;
+import static com.example.michael.footrace.MainActivity.prof;
 
 /**
  * Created by SCheng on 12/11/2016.
@@ -62,6 +63,9 @@ public class MultiResults extends AppCompatActivity{
             tv.setTypeface(tf);
 
         }
+
+        TextView p1 = (TextView) findViewById(R.id.time_value);
+        p1.setText(prof.get_displayName());
 
     }
 }

@@ -12,8 +12,6 @@
     android:background="@color/secondaryBackground"
     tools:context="com.example.michael.footrace.MultiPlayerJoin">
 
-
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,6 +31,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:background="@drawable/beveledsquarebuttonstyle"
-        android:onClick="cancelHost"/>
+        android:onClick="cancelJoin"/>
 
 </RelativeLayout>

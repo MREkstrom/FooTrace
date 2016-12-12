@@ -7,6 +7,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -67,7 +68,7 @@ public class BroadcastGame extends AppCompatActivity {
     }
 
     //Cancels Hosting
-    public void cancelHost(){
+    public void cancelHost(View v){
         button_sound.start();
         finish();
     }

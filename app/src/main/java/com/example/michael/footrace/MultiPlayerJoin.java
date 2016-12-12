@@ -7,6 +7,7 @@ import android.graphics.Typeface;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -83,6 +84,12 @@ public class MultiPlayerJoin extends AppCompatActivity {
             traceList.add(name);
             //traces.get(name).getPath();
         }
+    }
+
+    //Cancels Joining
+    public void cancelJoin(View v){
+        button_sound.start();
+        finish();
     }
 
 }
