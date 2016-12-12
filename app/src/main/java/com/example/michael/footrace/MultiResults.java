@@ -8,39 +8,24 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import static com.example.michael.footrace.MainActivity.button_sound;
 
 /**
- * Created by SCheng on 12/4/2016.
+ * Created by SCheng on 12/11/2016.
  */
 
-public class Results extends AppCompatActivity{
-
-    private TextView _timeResultValue;
-    private TextView _accuracyValue;
-    private TextView _scoreValue;
+public class MultiResults extends AppCompatActivity{
     private Button _doneButton;
     private Button _retryButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_results);
+        setContentView(R.layout.activity_multi_results);
 
         Intent resultIntent = getIntent();
         String time_value = resultIntent.getStringExtra("time_results");
         final String pathName = resultIntent.getStringExtra("PathName");
-
-        _timeResultValue = (TextView) findViewById(R.id.time_value);
-        _timeResultValue.setText(time_value);
-
-        _accuracyValue = (TextView) findViewById(R.id.acurracy_value);
-        _accuracyValue.setText("85%");
-
-        _scoreValue = (TextView) findViewById(R.id.score_value);
-        _scoreValue.setText("283");
 
         _doneButton = (Button) findViewById(R.id.reults_done_button);
         _doneButton.setOnClickListener(new View.OnClickListener() {
@@ -55,8 +40,8 @@ public class Results extends AppCompatActivity{
         _retryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent retryIntent = new Intent(Results.this, PlayGame.class);
-                retryIntent.putExtra("Mode","SP").putExtra("PathName",pathName);
+                Intent retryIntent = new Intent(MultiResults.this, PlayGame.class);
+                retryIntent.putExtra("Mode","MP").putExtra("PathName",pathName);
                 startActivity(retryIntent);
                 finish();
             }

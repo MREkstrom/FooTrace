@@ -26,6 +26,8 @@
         </activity>
         <activity android:name=".MultiPlayerHost">
         </activity>
+        <activity android:name=".MultiResults">
+        </activity>
         <activity android:name=".BroadcastGame">
         </activity>
         <activity android:name=".MultiPlayerJoin">

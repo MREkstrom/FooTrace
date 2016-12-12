@@ -158,10 +158,20 @@ public class PlayGame extends AppCompatActivity implements SensorEventListener{
             String endTime = _timeDisplay.getText().toString();
             endTime = endTime.substring(6, endTime.length());
 
-            Intent result = new Intent(this, Results.class);
+
+            Intent result = new Intent();
+            switch(_mode){
+                case SINGLE:
+                    result = new Intent(this, Results.class);
+                    break;
+                case MULTI:
+                    result = new Intent(this, MultiResults.class);
+                    break;
+            }
+
             result.putExtra("time_results", endTime);
             //Put extras with score and path name, for retry
-            result.putExtra("PathName",_pathName);
+            result.putExtra("PathName", _pathName);
 
             setResult(RESULT_OK, result);
             startActivity(result);
