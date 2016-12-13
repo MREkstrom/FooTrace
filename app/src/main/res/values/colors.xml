@@ -7,4 +7,6 @@
     <color name="seekBarGreen">#369f30</color>
     <color name="seekBarRed">#9f3030</color>
     <color name="secondaryBackground">#bfe4be</color>
+    <color name="stopWatchBackground">#a590b094</color>
+    <color name="stopWatchText">#c00e0e</color>
 </resources>

@@ -56,6 +56,17 @@ public class Settings extends AppCompatActivity {
             b.setTypeface(tf);
         }
 
+        TextView[] tvs = {(TextView) findViewById(R.id.displayNameField),
+                (TextView) findViewById(R.id.emailAddressField),
+                (TextView) findViewById(R.id.colorSwatchTitle),
+                (TextView) findViewById(R.id.audio_settings),
+                (TextView) findViewById(R.id.background_music_slider),
+                (TextView) findViewById(R.id.SFX_music_slider),
+                (TextView) findViewById(R.id.mute_textview)};
+        for (TextView tv : tvs) {
+            tv.setTypeface(tf);
+        }
+
         final AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
         SeekBar _backgroundMusic = (SeekBar) findViewById(R.id.background_slider);

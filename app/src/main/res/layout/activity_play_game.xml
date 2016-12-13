@@ -36,10 +36,10 @@
         android:layout_gravity="center_horizontal"
         android:ellipsize="end"
         android:scrollbars="none"
-        android:background="#ffffff"
+        android:background="@color/stopWatchBackground"
         android:text="Time: 00:00:000"
         android:textAlignment="center"
-        android:textColor="#ff0019"
+        android:textColor="@color/stopWatchText"
         android:textSize="42dp"/>
 
 </RelativeLayout>

@@ -65,7 +65,8 @@ public class Results extends AppCompatActivity{
 
         //Set typeface of buttons and text views
         Typeface tf = Typeface.createFromAsset(getAssets(), "mvboli.ttf");
-        Button[] buttons = {(Button) findViewById(R.id.reults_done_button)};
+        Button[] buttons = {(Button) findViewById(R.id.reults_done_button),
+                (Button) findViewById(R.id.results_retry_button)};
         for (Button b : buttons) {
             b.setTypeface(tf);
         }

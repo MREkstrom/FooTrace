@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Typeface;
@@ -97,12 +98,18 @@ public class SinglePlayerMain extends AppCompatActivity {
                 Path path = MainActivity.userTraces.get(getItem(position)).getPath();
                 Paint paint = MainActivity.userTraces.get(getItem(position)).getPaint();
 
+                Matrix shiftOver = new Matrix();
+                shiftOver.setTranslate(150, 0);
+                path.transform(shiftOver);
+
                 Bitmap tempBmp = Bitmap.createBitmap(950, 950, Bitmap.Config.RGB_565);
                 Canvas tempCan = new Canvas(tempBmp);
-                tempCan.drawARGB(255, 191, 228, 179);
+                tempCan.drawARGB(255, 181, 218, 189);
                 tempCan.drawPath(path, paint);
                 row.pathImage.setImageBitmap(tempBmp);
 
+                shiftOver.setTranslate(-150, 0);
+                path.transform(shiftOver);
 
                 convertView.setTag(row);
             }

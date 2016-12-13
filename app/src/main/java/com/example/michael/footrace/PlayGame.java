@@ -3,6 +3,7 @@ package com.example.michael.footrace;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
+import android.graphics.Typeface;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.hardware.Sensor;
@@ -94,6 +95,13 @@ public class PlayGame extends AppCompatActivity implements SensorEventListener{
 
         //Sets stopwatch textView
         _timeDisplay = (TextView) findViewById(R.id.stopwatch);
+
+        //Set button typeface
+        Typeface tf = Typeface.createFromAsset(getAssets(), "mvboli.ttf");
+        Button[] buttons = {(Button) findViewById(R.id.startAndStopButton)};
+        for (Button b : buttons) {
+            b.setTypeface(tf);
+        }
 
     }
 

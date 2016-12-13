@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/backgroundcropped"
+    android:background="@drawable/backgroundrevised"
     tools:context="com.example.michael.footrace.MainActivity">
 
     <Button
@@ -46,17 +46,6 @@
         android:layout_alignBottom="@+id/mpButton"
         android:layout_alignLeft="@+id/mpButton"
         android:layout_alignStart="@+id/mpButton" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/title"
-        android:id="@+id/appTitle"
-        android:scaleX="1.4"
-        android:scaleY="1.4"
-        android:layout_marginTop="18dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
 
     <ImageButton
         android:layout_width="wrap_content"
