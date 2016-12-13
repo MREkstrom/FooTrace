@@ -64,9 +64,7 @@
         android:layout_alignParentEnd="true" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/globe"
+        app:srcCompat="@drawable/globe"
         android:id="@+id/mapToggleButton"
         android:onClick="onDesignButtonClick"
         android:background="@android:color/transparent"
@@ -75,7 +73,12 @@
         android:layout_alignParentStart="true"
         android:layout_marginRight="25dp"
         android:layout_marginEnd="25dp"
-        android:paddingBottom="5dp" />
+        android:paddingBottom="5dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:paddingTop="5dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp" />
     />
 
 </RelativeLayout>
